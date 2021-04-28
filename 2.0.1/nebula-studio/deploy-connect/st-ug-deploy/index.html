@@ -1391,6 +1391,11 @@
     后续操作
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#faq">
+    FAQ
+  </a>
+</li>
 </ul>
 </nav>
 </div>
@@ -1406,8 +1411,8 @@
 <h2 id="_1">前提条件<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>在部署 Docker 版 Studio 之前，您需要确认以下信息：</p>
 <ul>
-<li>Nebula Graph 服务已经部署并启动。详细信息，参考<a href="https://docs.nebula-graph.io/manual-EN/3.build-develop-and-administration/2.install/1.install-with-rpm-deb/" title="点击前往 Nebula Graph 用户手册">《Nebula Graph 用户手册》</a>。<blockquote>
-<p><strong>说明</strong>：您可以使用多种方式部署并启动 Nebula Graph 服务。如果您刚开始使用 Nebula Graph，建议您使用 Docker Compose 部署 Nebula Graph。详细信息参考 <a href="https://github.com/vesoft-inc/nebula-docker-compose/blob/master/README_zh-CN.md" title="点击前往 GitHub 网站">使用 Docker Compose 部署 Nebula Graph</a>。</p>
+<li>Nebula Graph 服务已经部署并启动。详细信息，参考<a href="https://docs.nebula-graph.com.cn/2.0.1/4.deployment-and-installation/1.resource-preparations/" title="点击前往 Nebula Graph 安装部署">Nebula Graph安装部署</a>。<blockquote>
+<p><strong>说明</strong>：您可以使用Docker Compose或RPM方式部署并启动 Nebula Graph 服务。如果您刚开始使用 Nebula Graph，建议您使用 Docker Compose 部署 Nebula Graph。详细信息参考 <a href="https://github.com/vesoft-inc/nebula-docker-compose/blob/master/README_zh-CN.md" title="点击前往 GitHub 网站">使用 Docker Compose 部署 Nebula Graph</a>。</p>
 </blockquote>
 </li>
 </ul>
@@ -1468,11 +1473,35 @@ Creating docker_nginx_1    ... <span class="k">done</span>
 </ol>
 <h2 id="_3">后续操作<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>进入 Studio 登录界面后，您需要连接 Nebula Graph。详细信息，参考 <a href="../st-ug-connect/">连接数据库</a>。</p>
+<h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">¶</a></h2>
+<p>Q:studio有rpm安装或者其他非docker部署方式吗？</p>
+<p>A:目前支持rpm包安装，详细信息，参考<a href="https://docs.nebula-graph.com.cn/2.0.1/4.deployment-and-installation/2.compile-and-install-nebula-graph/2.install-nebula-graph-by-rpm-or-deb/">使用RPM或DEB安装包安装Nebula Graph</a>。</p>
+<p>Q:前提条件搭建成功，studio启动失败。</p>
+<p>A:您可以检查7001，8080，5699的端口是否被占用。如果端口号被占用，可以考虑kill服务或修改studio服务启动端口。</p>
+<div class="highlight"><pre><span></span><code>//检查端口是否被占用
+losf -i:7001
+
+//修改studio服务启动端口
+$ vi config/config.default.js
+
+//修改
+...
+    config.cluster <span class="o">=</span> <span class="o">{</span>
+        listen: <span class="o">{</span>
+            port: <span class="m">7001</span>, // 修改这个端口号，改成任意一个当前可用的即可
+            hostname: <span class="s1">'0.0.0.0'</span>,
+        <span class="o">}</span>,
+    <span class="o">}</span><span class="p">;</span>
+...
+
+//重新启动npm
+$ npm run start
+</code></pre></div>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月7日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月28日</span>
 </small>
 </div>
 </article>

@@ -7,10 +7,10 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Documentation for Nebula Graph Database" name="description"/>
 <meta content="Nebula Graph" name="author"/>
-<link href="https://docs.nebula-graph.com.cn/2.quick-start/4.nebula-graph-crud/" rel="canonical"/>
+<link href="https://docs.nebula-graph.com.cn/16.eco-tools/0.eco-tool-version/" rel="canonical"/>
 <link href="../../assets/images/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.1.2, mkdocs-material-7.1.3" name="generator"/>
-<title>Nebula Graph常用语法（CRUD） - Nebula Graph Database 内核手册</title>
+<title>版本说明 - Nebula Graph Database 内核手册</title>
 <link href="../../assets/stylesheets/main.e35208c4.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.ef6f36e2.min.css" rel="stylesheet"/>
 <meta content="#ffffff" name="theme-color"/>
@@ -52,7 +52,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Nebula Graph常用语法（CRUD）
+              版本说明
             
           </span>
 </div>
@@ -187,8 +187,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
 <label class="md-nav__link" for="__nav_3">
         快速入门
         <span class="md-nav__icon md-icon"></span>
@@ -200,217 +200,37 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../0.FAQ/">
+<a class="md-nav__link" href="../../2.quick-start/0.FAQ/">
         FAQ
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../1.quick-start-workflow/">
+<a class="md-nav__link" href="../../2.quick-start/1.quick-start-workflow/">
         快速入门流程
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../2.deploy-nebula-graph-with-docker-compose/">
+<a class="md-nav__link" href="../../2.quick-start/2.deploy-nebula-graph-with-docker-compose/">
         Docker Compose部署Nebula Graph
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../5.start-stop-service/">
+<a class="md-nav__link" href="../../2.quick-start/5.start-stop-service/">
         管理Nebula Graph服务
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../3.connect-to-nebula-graph/">
+<a class="md-nav__link" href="../../2.quick-start/3.connect-to-nebula-graph/">
         连接Nebula Graph
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          Nebula Graph常用语法（CRUD）
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../2.quick-start/4.nebula-graph-crud/">
         Nebula Graph常用语法（CRUD）
       </a>
-<nav aria-label="目录" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#schema">
-    图空间和Schema
-  </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#nebula_graph">
-    检查Nebula Graph集群的机器状态
-  </a>
-<nav aria-label="检查Nebula Graph集群的机器状态" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_2">
-    异步实现创建和修改
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_3">
-    创建和选择图空间
-  </a>
-<nav aria-label="创建和选择图空间" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ngql">
-    nGQL语法
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_4">
-    示例
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_5">
-    创建标签和边类型
-  </a>
-<nav aria-label="创建标签和边类型" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ngql_1">
-    nGQL语法
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_6">
-    示例
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_7">
-    插入点和边
-  </a>
-<nav aria-label="插入点和边" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ngql_2">
-    nGQL语法
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_8">
-    示例
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_9">
-    查询数据
-  </a>
-<nav aria-label="查询数据" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ngql_3">
-    nGQL语法
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#go">
-    GO语句示例
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#fetch">
-    FETCH语句示例
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_10">
-    修改点和边
-  </a>
-<nav aria-label="修改点和边" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ngql_4">
-    nGQL语法
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_11">
-    示例
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_12">
-    删除点和边
-  </a>
-<nav aria-label="删除点和边" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ngql_5">
-    nGQL语法
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_13">
-    示例
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_14">
-    索引
-  </a>
-<nav aria-label="索引" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_15">
-    使用索引必读
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ngql_6">
-    nGQL语法
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_16">
-    示例
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#lookupmatch">
-    基于索引的LOOKUP和MATCH示例
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../6.useful-links/">
+<a class="md-nav__link" href="../../2.quick-start/6.useful-links/">
         常用链接
       </a>
 </li>
@@ -1490,22 +1310,22 @@
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../16.eco-tools/1.nebula-exchange/">
+<a class="md-nav__link" href="../1.nebula-exchange/">
         Nebula Exchange
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../16.eco-tools/2.nebula-importer/">
+<a class="md-nav__link" href="../2.nebula-importer/">
         Nebula Importer
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../16.eco-tools/3.nebula-spark-connector/">
+<a class="md-nav__link" href="../3.nebula-spark-connector/">
         Nebula Spark Connector
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../16.eco-tools/4.nebula-flink-connector/">
+<a class="md-nav__link" href="../4.nebula-flink-connector/">
         Nebula Flink Connector
       </a>
 </li>
@@ -1557,171 +1377,29 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#schema">
-    图空间和Schema
+<a class="md-nav__link" href="#nebula_studio">
+    Nebula Studio
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#nebula_graph">
-    检查Nebula Graph集群的机器状态
-  </a>
-<nav aria-label="检查Nebula Graph集群的机器状态" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_2">
-    异步实现创建和修改
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_3">
-    创建和选择图空间
-  </a>
-<nav aria-label="创建和选择图空间" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ngql">
-    nGQL语法
+<a class="md-nav__link" href="#nebula_exchange">
+    Nebula Exchange
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#_4">
-    示例
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_5">
-    创建标签和边类型
-  </a>
-<nav aria-label="创建标签和边类型" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ngql_1">
-    nGQL语法
+<a class="md-nav__link" href="#nebula_importer">
+    Nebula Importer
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#_6">
-    示例
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_7">
-    插入点和边
-  </a>
-<nav aria-label="插入点和边" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ngql_2">
-    nGQL语法
+<a class="md-nav__link" href="#nebula_spark_connector">
+    Nebula Spark Connector
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#_8">
-    示例
+<a class="md-nav__link" href="#nebula_flink_connector">
+    Nebula Flink Connector
   </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_9">
-    查询数据
-  </a>
-<nav aria-label="查询数据" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ngql_3">
-    nGQL语法
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#go">
-    GO语句示例
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#fetch">
-    FETCH语句示例
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_10">
-    修改点和边
-  </a>
-<nav aria-label="修改点和边" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ngql_4">
-    nGQL语法
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_11">
-    示例
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_12">
-    删除点和边
-  </a>
-<nav aria-label="删除点和边" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ngql_5">
-    nGQL语法
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_13">
-    示例
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_14">
-    索引
-  </a>
-<nav aria-label="索引" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_15">
-    使用索引必读
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#ngql_6">
-    nGQL语法
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_16">
-    示例
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#lookupmatch">
-    基于索引的LOOKUP和MATCH示例
-  </a>
-</li>
-</ul>
-</nav>
 </li>
 </ul>
 </nav>
@@ -1730,636 +1408,114 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/vesoft-inc/nebula-docs-cn/edit/master/docs-2.0/2.quick-start/4.nebula-graph-crud.md" title="编辑此页">
+<a class="md-content__button md-icon" href="https://github.com/vesoft-inc/nebula-docs-cn/edit/master/docs-2.0/16.eco-tools/0.eco-tool-version.md" title="编辑此页">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
-<h1 id="_1">基础操作语法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
-<p>本文介绍Nebula Graph基础操作的语法。</p>
-<h2 id="schema">图空间和Schema<a class="headerlink" href="#schema" title="Permanent link">¶</a></h2>
-<p>一个Nebula Graph实例由一个或多个图空间组成。每个图空间都是物理隔离的，您可以在同一个实例中使用不同的图空间存储不同的数据集。</p>
-<p><img alt="Nebula Graph and graph spaces" src="https://docs-cdn.nebula-graph.com.cn/docs-2.0/2.quick-start/nebula-graph-instance-and-graph-spaces.png"/></p>
-<p>为了在图空间中插入数据，需要为图数据库定义一个Schema。Nebula Graph的Schema是由如下几部分组成。</p>
+<h1 id="_1">版本说明<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<p>不同版本的生态工具支持的Nebula Graph内核版本不同，本文介绍生态工具版本和Nebula Graph内核版本的对应关系。</p>
+<blockquote>
+<p><strong>说明</strong>：1.x版本的生态工具不支持在Nebula Graph 2.x版本中使用。</p>
+</blockquote>
+<h2 id="nebula_studio">Nebula Studio<a class="headerlink" href="#nebula_studio" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th align="left">组成部分</th>
-<th align="left">说明</th>
+<th align="left">Studio client版本</th>
+<th align="left">Nebula Graph版本</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">点（vertex）</td>
-<td align="left">表示现实世界中的实体。一个点可以有一个或多个标签。</td>
+<td align="left">2.2.0</td>
+<td align="left">2.0.0</td>
 </tr>
 <tr>
-<td align="left">标签（tag）</td>
-<td align="left">点的类型，定义了一组描述点类型的属性。</td>
-</tr>
-<tr>
-<td align="left">边（edge）</td>
-<td align="left">表示两个点之间<strong>有方向</strong>的关系。</td>
-</tr>
-<tr>
-<td align="left">边类型（edge type）</td>
-<td align="left">边的类型，定义了一组描述边类型的属性。</td>
+<td align="left">2.2.0</td>
+<td align="left">2.0.1</td>
 </tr>
 </tbody>
 </table>
-<p>更多信息，请参见<a href="../../1.introduction/2.data-model/">数据结构</a>。</p>
-<p>本文将使用下图的数据集演示基础操作的语法。</p>
-<p><img alt="The demo dataset" src="https://docs-cdn.nebula-graph.com.cn/docs-2.0/2.quick-start/dataset-for-crud.png"/></p>
-<h2 id="nebula_graph">检查Nebula Graph集群的机器状态<a class="headerlink" href="#nebula_graph" title="Permanent link">¶</a></h2>
-<p>首先建议您检查机器状态，确保所有的Storage服务连接到了Meta服务。执行命令<code>SHOW HOSTS</code>查看机器状态。</p>
-<div class="highlight"><pre><span></span><code>nebula&gt; SHOW HOSTS;
-+-------------+-----------+-----------+--------------+----------------------+------------------------+
-| Host        | Port      | Status    | Leader count | Leader distribution  | Partition distribution |
-+-------------+-----------+-----------+--------------+----------------------+------------------------+
-| "storaged0" | 9779      | "ONLINE"  | 0            | "No valid partition" | "No valid partition"   |
-+-------------+-----------+-----------+--------------+----------------------+------------------------+
-| "storaged1" | 9779      | "ONLINE"  | 0            | "No valid partition" | "No valid partition"   |
-+-------------+-----------+-----------+--------------+----------------------+------------------------+
-| "storaged2" | 9779      | "ONLINE"  | 0            | "No valid partition" | "No valid partition"   |
-+-------------+-----------+-----------+--------------+----------------------+------------------------+
-| "Total"     | __EMPTY__ | __EMPTY__ | 0            | __EMPTY__            | __EMPTY__              |
-+-------------+-----------+-----------+--------------+----------------------+------------------------+
-Got 4 rows (time spent 1061/2251 us)
-</code></pre></div>
-<p>在返回结果中，查看<strong>Status</strong>列，可以看到所有Storage服务都在线。</p>
-<h3 id="_2">异步实现创建和修改<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
-<p>Nebula Graph中执行如下创建和修改操作，是异步实现的，需要在下一个心跳周期才同步数据。</p>
-<ul>
-<li><code>CREATE SPACE</code></li>
-<li><code>CREATE TAG</code></li>
-<li><code>CREATE EDGE</code></li>
-<li><code>ALTER TAG</code></li>
-<li><code>ALTER EDGE</code></li>
-<li><code>CREATE TAG INDEX</code></li>
-<li><code>CREATE EDGE INDEX</code></li>
-</ul>
-<blockquote>
-<p><strong>说明</strong>：默认心跳周期是10秒。修改心跳周期参数<code>heartbeat_interval_secs</code>，请参见<a href="../../5.configurations-and-logs/1.configurations/1.configurations/">配置简介</a>。</p>
-</blockquote>
-<p>为确保数据同步，后续操作能顺利进行，可采取以下方法之一：</p>
-<ul>
-<li>执行<code>SHOW</code>或<code>DESCRIBE</code>命令检查相应对象的状态，确保创建或修改已完成。如果没有完成，请等待几秒重试。</li>
-</ul>
-<ul>
-<li>等待2个心跳周期（20秒）。</li>
-</ul>
-<h2 id="_3">创建和选择图空间<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<h3 id="ngql">nGQL语法<a class="headerlink" href="#ngql" title="Permanent link">¶</a></h3>
-<ul>
-<li>创建图空间<div class="highlight"><pre><span></span><code>CREATE SPACE [IF NOT EXISTS] &lt;graph_space_name&gt;
-    [(partition_num = &lt;partition_number&gt;, 
-    replica_factor = &lt;replica_number&gt;, 
-    vid_type = {FIXED_STRING(&lt;N&gt;) | INT64})];
-</code></pre></div>
-<!-- <code>charset</code>和<code>collate</code>当前只有一个可选值，暂时忽略。
-      charset = <charset>
-      collate = <collate>
-  -->
+<h2 id="nebula_exchange">Nebula Exchange<a class="headerlink" href="#nebula_exchange" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th align="left">参数</th>
-<th align="left">说明</th>
+<th align="left">Exchange client版本</th>
+<th align="left">Nebula Graph版本</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">partition_num</td>
-<td align="left">指定图空间的分片数量。建议设置为5倍的集群硬盘数量。例如集群中有3个硬盘，建议设置15个分片。</td>
+<td align="left">2.0.0</td>
+<td align="left">2.0.0</td>
 </tr>
 <tr>
-<td align="left">replica_factor</td>
-<td align="left">指定每个分片的副本数量。建议在生产环境中设置为3，在测试环境中设置为1。由于需要进行基于quorum的选举，副本数量必须是<strong>奇数</strong>。</td>
-</tr>
-<tr>
-<td align="left">vid_type</td>
-<td align="left">指定点ID的数据类型。可选值为<code>FIXED_STRING(&lt;N&gt;)</code>和<code>INT64</code>。<code>FIXED_STRING(&lt;N&gt;)</code>表示数据类型为字符串，最大长度为<code>N</code>，超出长度会报错；<code>INT64</code>表示数据类型为整数。默认值为<code>FIXED_STRING(8)</code>。</td>
+<td align="left">2.0.0</td>
+<td align="left">2.0.1</td>
 </tr>
 </tbody>
 </table>
-</li>
-</ul>
-<ul>
-<li>列出创建成功的图空间<div class="highlight"><pre><span></span><code>nebula&gt; SHOW SPACES;
-</code></pre></div>
-</li>
-</ul>
-<ul>
-<li>选择数据库<div class="highlight"><pre><span></span><code>USE &lt;graph_space_name&gt;;
-</code></pre></div>
-</li>
-</ul>
-<h3 id="_4">示例<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
-<ol>
-<li>
-<p>执行如下语句创建名为<code>basketballplayer</code>的图空间。</p>
-<div class="highlight"><pre><span></span><code>nebula&gt; CREATE SPACE basketballplayer(partition_num=15, replica_factor=1, vid_type=fixed_string(30));
-Execution succeeded (time spent 2817/3280 us)
-</code></pre></div>
-</li>
-<li>
-<p>执行命令<code>SHOW HOSTS</code>检查分片的分布情况，确保平衡分布。</p>
-<div class="highlight"><pre><span></span><code>nebula&gt; SHOW HOSTS;
-+-------------+-----------+-----------+--------------+----------------------------------+------------------------+
-| Host        | Port      | Status    | Leader count | Leader distribution              | Partition distribution |
-+-------------+-----------+-----------+--------------+----------------------------------+------------------------+
-| "storaged0" | 9779      | "ONLINE"  | 5            | "basketballplayer:5"             | "basketballplayer:5"   |
-+-------------+-----------+-----------+--------------+----------------------------------+------------------------+
-| "storaged1" | 9779      | "ONLINE"  | 5            | "basketballplayer:5"             | "basketballplayer:5"   |
-+-------------+-----------+-----------+--------------+----------------------------------+------------------------+
-| "storaged2" | 9779      | "ONLINE"  | 5            | "basketballplayer:5"             | "basketballplayer:5"   |
-+-------------+-----------+-----------+--------------+----------------------------------+------------------------+
-| "Total"     | __EMPTY__ | __EMPTY__ | 15           | "basketballplayer:15"            | "basketballplayer:15"  |
-+-------------+-----------+-----------+--------------+----------------------------------+------------------------+
-Got 4 rows (time spent 1633/2867 us)
-</code></pre></div>
-<p>如果<strong>Leader distribution</strong>分布不均匀，请执行命令<code>BALANCE LEADER</code>重新分配。更多信息，请参见<a href="../../8.service-tuning/load-balance/">Storage负载均衡</a>。</p>
-</li>
-<li>
-<p>选择图空间<code>basketballplayer</code>。</p>
-<div class="highlight"><pre><span></span><code>nebula[(none)]&gt; USE basketballplayer;
-Execution succeeded (time spent 1229/2318 us)
-</code></pre></div>
-<p>您可以执行命令<code>SHOW SPACES</code>查看创建的图空间。</p>
-<div class="highlight"><pre><span></span><code>nebula&gt; SHOW SPACES;
-+--------------------+
-| Name               |
-+--------------------+
-| "basketballplayer" |
-+--------------------+
-Got 1 rows (time spent 977/2000 us)
-</code></pre></div>
-</li>
-</ol>
-<h2 id="_5">创建标签和边类型<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
-<h3 id="ngql_1">nGQL语法<a class="headerlink" href="#ngql_1" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>CREATE {TAG | EDGE} {&lt;tag_name&gt; | &lt;edge_type&gt;}(&lt;property_name&gt; &lt;data_type&gt;
-[, &lt;property_name&gt; &lt;data_type&gt; ...]);
-</code></pre></div>
-<h3 id="_6">示例<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
-<p>创建标签<code>player</code>和<code>team</code>，以及边类型<code>follow</code>和<code>serve</code>。说明如下表。</p>
+<h2 id="nebula_importer">Nebula Importer<a class="headerlink" href="#nebula_importer" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th align="left">名称</th>
-<th align="left">类型</th>
-<th align="left">属性</th>
+<th align="left">Importer client版本</th>
+<th align="left">Nebula Graph版本</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">player</td>
-<td align="left">Tag</td>
-<td align="left">name (string), age (int)</td>
+<td align="left">2.0.0</td>
+<td align="left">2.0.0</td>
 </tr>
 <tr>
-<td align="left">team</td>
-<td align="left">Tag</td>
-<td align="left">name (string)</td>
-</tr>
-<tr>
-<td align="left">follow</td>
-<td align="left">Edge type</td>
-<td align="left">degree (int)</td>
-</tr>
-<tr>
-<td align="left">serve</td>
-<td align="left">Edge type</td>
-<td align="left">start_year (int), end_year (int)</td>
+<td align="left">2.0.0</td>
+<td align="left">2.0.1</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG player(name string, age int);
-Execution succeeded (time spent 20708/22071 us)
-
-Wed, 24 Feb 2021 03:47:01 EST
-
-nebula&gt; CREATE TAG team(name string);
-Execution succeeded (time spent 5643/6810 us)
-
-Wed, 24 Feb 2021 03:47:59 EST
-
-nebula&gt; CREATE EDGE follow(degree int);
-Execution succeeded (time spent 12665/13934 us)
-
-Wed, 24 Feb 2021 03:48:07 EST
-
-nebula&gt; CREATE EDGE serve(start_year int, end_year int);
-Execution succeeded (time spent 5858/6870 us)
-
-Wed, 24 Feb 2021 03:48:16 EST
-</code></pre></div>
-<h2 id="_7">插入点和边<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
-<p>您可以使用<code>INSERT</code>语句，基于现有的标签插入点，或者基于现有的边类型插入边。</p>
-<h3 id="ngql_2">nGQL语法<a class="headerlink" href="#ngql_2" title="Permanent link">¶</a></h3>
-<ul>
-<li>插入点<div class="highlight"><pre><span></span><code>INSERT VERTEX &lt;tag_name&gt; (&lt;property_name&gt;[, &lt;property_name&gt;...])
-[, &lt;tag_name&gt; (&lt;property_name&gt;[, &lt;property_name&gt;...]), ...]
-{VALUES | VALUE} &lt;vid&gt;: (&lt;property_value&gt;[, &lt;property_value&gt;...])
-[, &lt;vid&gt;: (&lt;property_value&gt;[, &lt;property_value&gt;...];
-</code></pre></div>
-<p><code>VID</code>是Vertex ID的缩写，<code>VID</code>在一个图空间中是唯一的。</p>
-</li>
-</ul>
-<ul>
-<li>插入边<div class="highlight"><pre><span></span><code>INSERT EDGE &lt;edge_type&gt; (&lt;property_name&gt;[, &lt;property_name&gt;...])
-{VALUES | VALUE} &lt;src_vid&gt; -&gt; &lt;dst_vid&gt;[@&lt;rank&gt;] : (&lt;property_value&gt;[, &lt;property_value&gt;...])
-[, &lt;src_vid&gt; -&gt; &lt;dst_vid&gt;[@&lt;rank&gt;] : (&lt;property_name&gt;[, &lt;property_name&gt;...]), ...];
-</code></pre></div>
-</li>
-</ul>
-<h3 id="_8">示例<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
-<ul>
-<li>插入代表球员和球队的点。<div class="highlight"><pre><span></span><code>nebula&gt; INSERT VERTEX player(name, age) VALUES "player100":("Tim Duncan", 42);
-Execution succeeded (time spent 28196/30896 us)
-
-Wed, 24 Feb 2021 03:55:08 EST
-
-nebula&gt; INSERT VERTEX player(name, age) VALUES "player101":("Tony Parker", 36);
-Execution succeeded (time spent 2708/3834 us)
-
-Wed, 24 Feb 2021 03:55:20 EST
-
-nebula&gt; INSERT VERTEX player(name, age) VALUES "player102":("LaMarcus Aldridge", 33);
-Execution succeeded (time spent 1945/3294 us)
-
-Wed, 24 Feb 2021 03:55:32 EST
-
-nebula&gt; INSERT VERTEX team(name) VALUES "team200":("Warriors"), "team201":("Nuggets");
-Execution succeeded (time spent 2269/3310 us)
-
-Wed, 24 Feb 2021 03:55:47 EST
-</code></pre></div>
-</li>
-</ul>
-<ul>
-<li>插入代表球员和球队之间关系的边。<div class="highlight"><pre><span></span><code>nebula&gt; INSERT EDGE follow(degree) VALUES "player100" -&gt; "player101":(95);
-Execution succeeded (time spent 3362/4542 us)
-
-Wed, 24 Feb 2021 03:57:36 EST
-
-nebula&gt; INSERT EDGE follow(degree) VALUES "player100" -&gt; "player102":(90);
-Execution succeeded (time spent 2974/4274 us)
-
-Wed, 24 Feb 2021 03:57:44 EST
-
-nebula&gt; INSERT EDGE follow(degree) VALUES "player102" -&gt; "player101":(75);
-Execution succeeded (time spent 1891/3096 us)
-
-Wed, 24 Feb 2021 03:57:52 EST
-
-nebula&gt; INSERT EDGE serve(start_year, end_year) VALUES "player100" -&gt; "team200":(1997, 2016), "player101" -&gt; "team201":(1999,  2018);
-Execution succeeded (time spent 6064/7104 us)
-
-Wed, 24 Feb 2021 03:58:01 EST
-</code></pre></div>
-</li>
-</ul>
-<h2 id="_9">查询数据<a class="headerlink" href="#_9" title="Permanent link">¶</a></h2>
-<ul>
-<li><a href="../../3.ngql-guide/7.general-query-statements/3.go/">GO</a>语句可以根据指定的条件遍历数据库。<code>GO</code>语句从一个或多个点开始，沿着一条或多条边遍历，返回<code>YIELD</code>子句中指定的信息。</li>
-</ul>
-<ul>
-<li><a href="../../3.ngql-guide/7.general-query-statements/4.fetch/">FETCH</a>语句可以获得点或边的属性。</li>
-</ul>
-<ul>
-<li><a href="../../3.ngql-guide/7.general-query-statements/5.lookup/">LOOKUP</a>语句是基于<a href="#_14">索引</a>的，和<code>WHERE</code>子句一起使用，查找符合特定条件的数据。</li>
-</ul>
-<ul>
-<li><a href="../../3.ngql-guide/7.general-query-statements/2.match/">MATCH</a>语句是查询图数据最常用的，但是它依赖<a href="#_14">索引</a>去匹配Nebula Graph中的数据模型。</li>
-</ul>
-<h3 id="ngql_3">nGQL语法<a class="headerlink" href="#ngql_3" title="Permanent link">¶</a></h3>
-<ul>
-<li><code>GO</code><div class="highlight"><pre><span></span><code>GO [[&lt;M&gt; TO] &lt;N&gt; STEPS ] FROM &lt;vertex_list&gt;
-OVER &lt;edge_type_list&gt; [REVERSELY] [BIDIRECT]
-[WHERE &lt;expression&gt; [AND | OR expression ...])]
-YIELD [DISTINCT] &lt;return_list&gt;;
-</code></pre></div>
-</li>
-</ul>
-<ul>
-<li>
-<p><code>FETCH</code></p>
-<ul>
-<li>
-<p>查询标签属性</p>
-<div class="highlight"><pre><span></span><code>FETCH PROP ON {&lt;tag_name&gt; | &lt;tag_name_list&gt; | *} &lt;vid_list&gt;
-[YIELD [DISTINCT] &lt;return_list&gt;];
-</code></pre></div>
-</li>
-</ul>
-<ul>
-<li>
-<p>查询边属性</p>
-<div class="highlight"><pre><span></span><code>FETCH PROP ON &lt;edge_type&gt; &lt;src_vid&gt; -&gt; &lt;dst_vid&gt;[@&lt;rank&gt;]
-[, &lt;src_vid&gt; -&gt; &lt;dst_vid&gt; ...]
-[YIELD [DISTINCT] &lt;return_list&gt;];
-</code></pre></div>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><code>LOOKUP</code><div class="highlight"><pre><span></span><code>LOOKUP ON {&lt;tag_name&gt; | &lt;edge_type&gt;} 
-WHERE &lt;expression&gt; [AND expression ...])]
-[YIELD &lt;return_list&gt;];
-</code></pre></div>
-</li>
-</ul>
-<ul>
-<li><code>MATCH</code><div class="highlight"><pre><span></span><code>MATCH &lt;pattern&gt; [&lt;WHERE clause&gt;] RETURN &lt;output&gt;;
-</code></pre></div>
-</li>
-</ul>
-<h3 id="go"><code>GO</code>语句示例<a class="headerlink" href="#go" title="Permanent link">¶</a></h3>
-<ul>
-<li>从VID为<code>player100</code>的球员开始，沿着边<code>follow</code>找到连接的球员。<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM "player100" OVER follow;
-+-------------+
-| follow._dst |
-+-------------+
-| "player101" |
-+-------------+
-| "player102" |
-+-------------+
-Got 2 rows (time spent 12097/14220 us)
-</code></pre></div>
-</li>
-</ul>
-<ul>
-<li>从VID为<code>player100</code>的球员开始，沿着边<code>follow</code>查找年龄大于或等于35岁的球员，并返回他们的姓名和年龄，同时重命名对应的列。<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM "player100" OVER follow WHERE $$.player.age &gt;= 35 \
-                -&gt;     YIELD $$.player.name AS Teammate, $$.player.age AS Age;
-+---------------+-----+
-| Teammate      | Age |
-+---------------+-----+
-| "Tony Parker" | 36  |
-+---------------+-----+
-Got 1 rows (time spent 8206/9335 us)
-</code></pre></div>
+<h2 id="nebula_spark_connector">Nebula Spark Connector<a class="headerlink" href="#nebula_spark_connector" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th align="left">子句/符号</th>
-<th align="left">说明</th>
+<th align="left">Spark Connector版本</th>
+<th align="left">Nebula Graph版本</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>YIELD</code></td>
-<td align="left">指定该查询需要返回的值或结果。</td>
+<td align="left">2.0.0</td>
+<td align="left">2.0.0</td>
 </tr>
 <tr>
-<td align="left"><code>$$</code></td>
-<td align="left">表示边的终点。</td>
-</tr>
-<tr>
-<td align="left"><code>\</code></td>
-<td align="left">表示换行继续输入。</td>
+<td align="left">2.0.0</td>
+<td align="left">2.0.1</td>
 </tr>
 </tbody>
 </table>
-</li>
-</ul>
-<ul>
-<li>
-<p>从VID为<code>player100</code>的球员开始，沿着边<code>follow</code>查找连接的球员，然后检索这些球员的球队。为了合并这两个查询请求，可以使用管道符或临时变量。</p>
-<ul>
-<li>使用管道符</li>
-</ul>
-<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM "player100" OVER follow YIELD follow._dst AS id | \
-                GO FROM $-.id OVER serve YIELD $$.team.name AS Team, \
-                $^.player.name AS Player;
-+-----------+---------------+
-| Team      | Player        |
-+-----------+---------------+
-| "Nuggets" | "Tony Parker" |
-+-----------+---------------+
-Got 1 rows (time spent 5055/8203 us)
-</code></pre></div>
+<h2 id="nebula_flink_connector">Nebula Flink Connector<a class="headerlink" href="#nebula_flink_connector" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th align="left">子句/符号</th>
-<th align="left">说明</th>
+<th align="left">Flink Connector版本</th>
+<th align="left">Nebula Graph版本</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"><code>$^</code></td>
-<td align="left">表示边的起点。</td>
+<td align="left">2.0.0</td>
+<td align="left">2.0.0</td>
 </tr>
 <tr>
-<td align="left"><code>\|</code></td>
-<td align="left">组合多个查询的管道符，将前一个查询的结果集用于后一个查询。</td>
-</tr>
-<tr>
-<td align="left"><code>$-</code></td>
-<td align="left">表示管道符前面的查询输出的结果集。</td>
+<td align="left">2.0.0</td>
+<td align="left">2.0.1</td>
 </tr>
 </tbody>
 </table>
-<ul>
-<li>使用临时变量</li>
-</ul>
-<blockquote>
-<p><strong>说明</strong>：当复合语句作为一个整体提交给服务器时，其中的临时变量会在语句结束时被释放。</p>
-</blockquote>
-<p><code>ngql
-  nebula&gt; $var = GO FROM "player100" OVER follow YIELD follow._dst AS id; \
-  GO FROM $var.id OVER serve YIELD $$.team.name AS Team, \
-  $^.player.name AS Player;
-  +---------+-------------+
-  | Team    | Player      |
-  +---------+-------------+
-  | Nuggets | Tony Parker |
-  +---------+-------------+
-  Got 1 rows (time spent 3103/3711 us)</code></p>
-</li>
-</ul>
-<h3 id="fetch"><code>FETCH</code>语句示例<a class="headerlink" href="#fetch" title="Permanent link">¶</a></h3>
-<p>查询VID为<code>player100</code>的球员的属性。</p>
-<div class="highlight"><pre><span></span><code>nebula&gt; FETCH PROP ON player "player100";
-+----------------------------------------------------+
-| vertices_                                          |
-+----------------------------------------------------+
-| ("player100" :player{age: 42, name: "Tim Duncan"}) |
-+----------------------------------------------------+
-Got 1 rows (time spent 2006/2406 us)
-</code></pre></div>
-<blockquote>
-<p><strong>说明</strong>：<code>LOOKUP</code>和<code>MATCH</code>的示例在下文的<a href="#_14">索引</a>部分查看。</p>
-</blockquote>
-<h2 id="_10">修改点和边<a class="headerlink" href="#_10" title="Permanent link">¶</a></h2>
-<p>您可以使用<code>UPDATE</code>语句或<code>UPSERT</code>语句修改现有数据。</p>
-<p><code>UPSERT</code>是<code>UPDATE</code>和<code>INSERT</code>的结合体。当您使用<code>UPSERT</code>更新一个点或边，如果它不存在，数据库会自动插入一个新的点或边。</p>
-<blockquote>
-<p><strong>说明</strong>：<code>UPSERT</code>操作是基于Nebula Graph的分区进行串行操作，所以执行速度比单独执行<code>INSERT</code>或<code>UPDATE</code>慢。</p>
-</blockquote>
-<h3 id="ngql_4">nGQL语法<a class="headerlink" href="#ngql_4" title="Permanent link">¶</a></h3>
-<ul>
-<li><code>UPDATE</code>点<div class="highlight"><pre><span></span><code>UPDATE VERTEX &lt;vid&gt; SET &lt;properties to be updated&gt;
-[WHEN &lt;condition&gt;] [YIELD &lt;columns&gt;];
-</code></pre></div>
-</li>
-</ul>
-<ul>
-<li><code>UPDATE</code>边<div class="highlight"><pre><span></span><code>UPDATE EDGE &lt;source vid&gt; -&gt; &lt;destination vid&gt; [@rank] OF &lt;edge_type&gt;
-SET &lt;properties to be updated&gt; [WHEN &lt;condition&gt;] [YIELD &lt;columns to be output&gt;];
-</code></pre></div>
-</li>
-</ul>
-<ul>
-<li><code>UPSERT</code>点或边<div class="highlight"><pre><span></span><code>UPSERT {VERTEX &lt;vid&gt; | EDGE &lt;edge_type&gt;} SET &lt;update_columns&gt;
-[WHEN &lt;condition&gt;] [YIELD &lt;columns&gt;];
-</code></pre></div>
-</li>
-</ul>
-<h3 id="_11">示例<a class="headerlink" href="#_11" title="Permanent link">¶</a></h3>
-<ul>
-<li>
-<p>用<code>UPDATE</code>修改VID为<code>player100</code>的球员的<code>name</code>属性，然后用<code>FETCH</code>语句检查结果。</p>
-<p>```ngql
-  nebula&gt; UPDATE VERTEX "player100" SET player.name = "Tim";
-  Execution succeeded (time spent 3483/3914 us)</p>
-<p>Wed, 21 Oct 2020 10:53:14 UTC</p>
-<p>nebula&gt; FETCH PROP ON player "player100";
-  +---------------------------------------------+
-  | vertices_                                   |
-  +---------------------------------------------+
-  | ("player100" :player{age: 42, name: "Tim"}) |
-  +---------------------------------------------+
-  Got 1 rows (time spent 2463/3042 us)
-  ```</p>
-</li>
-</ul>
-<ul>
-<li>用<code>UPDATE</code>修改某条边的<code>degree</code>属性，然后用<code>FETCH</code>检查结果。<div class="highlight"><pre><span></span><code>nebula&gt; UPDATE EDGE "player100" -&gt; "player101" OF follow SET degree = 96;
-Execution succeeded (time spent 3932/4432 us)
-
-nebula&gt; FETCH PROP ON follow "player100" -&gt; "player101";
-+----------------------------------------------------+
-| edges_                                             |
-+----------------------------------------------------+
-| [:follow "player100"-&gt;"player101" @0 {degree: 96}] |
-+----------------------------------------------------+
-Got 1 rows (time spent 2205/2800 us)
-</code></pre></div>
-</li>
-</ul>
-<ul>
-<li>用<code>UPSERT</code>插入一个VID为<code>player111</code>的点。<div class="highlight"><pre><span></span><code>nebula&gt; INSERT VERTEX player(name, age) VALUES "player111":("Ben Simmons", 22);
-Execution succeeded (time spent 2115/2900 us)
-
-Wed, 21 Oct 2020 11:11:50 UTC
-
-nebula&gt; UPSERT VERTEX "player111" SET player.name = "Dwight Howard", player.age = $^.player.age + 11 \
-WHEN $^.player.name == "Ben Simmons" AND $^.player.age &gt; 20 \
-YIELD $^.player.name AS Name, $^.player.age AS Age;
-+---------------+-----+
-| Name          | Age |
-+---------------+-----+
-| Dwight Howard | 33  |
-+---------------+-----+
-Got 1 rows (time spent 1815/2329 us)
-</code></pre></div>
-</li>
-</ul>
-<h2 id="_12">删除点和边<a class="headerlink" href="#_12" title="Permanent link">¶</a></h2>
-<h3 id="ngql_5">nGQL语法<a class="headerlink" href="#ngql_5" title="Permanent link">¶</a></h3>
-<ul>
-<li>删除点<div class="highlight"><pre><span></span><code>DELETE VERTEX &lt;vid1&gt;[, &lt;vid2&gt;...]
-</code></pre></div>
-</li>
-</ul>
-<ul>
-<li>删除边<div class="highlight"><pre><span></span><code>DELETE EDGE &lt;edge_type&gt; &lt;src_vid&gt; -&gt; &lt;dst_vid&gt;[@&lt;rank&gt;]
-[, &lt;src_vid&gt; -&gt; &lt;dst_vid&gt;...]
-</code></pre></div>
-</li>
-</ul>
-<h3 id="_13">示例<a class="headerlink" href="#_13" title="Permanent link">¶</a></h3>
-<ul>
-<li>删除点<div class="highlight"><pre><span></span><code>nebula&gt; DELETE VERTEX "team1", "team2";
-Execution succeeded (time spent 4337/4782 us)
-</code></pre></div>
-</li>
-</ul>
-<ul>
-<li>删除边<div class="highlight"><pre><span></span><code>nebula&gt; DELETE EDGE follow "team1" -&gt; "team2";
-Execution succeeded (time spent 3700/4101 us)
-</code></pre></div>
-</li>
-</ul>
-<h2 id="_14">索引<a class="headerlink" href="#_14" title="Permanent link">¶</a></h2>
-<p>您可以通过<a href="../../3.ngql-guide/14.native-index-statements/1.create-native-index/">CREATE INDEX</a>语句为标签（tag）和边类型（edge type）增加索引。</p>
-<h3 id="_15">使用索引必读<a class="headerlink" href="#_15" title="Permanent link">¶</a></h3>
-<ul>
-<li><code>MATCH</code>和<code>LOOKUP</code>语句的执行都依赖索引，但是索引会导致写性能大幅降低（降低90%甚至更多）。请<strong>不要随意</strong>在生产环境中使用索引，除非您很清楚使用索引对业务的影响。</li>
-</ul>
-<ul>
-<li>您<strong>必须</strong>为已存在的数据重建索引，否则不能索引已存在的数据，导致无法在<code>MATCH</code>和<code>LOOKUP</code>语句中返回这些数据。更多信息，请参见<a href="../../3.ngql-guide/14.native-index-statements/1.create-native-index/">重建索引</a>。</li>
-</ul>
-<h3 id="ngql_6">nGQL语法<a class="headerlink" href="#ngql_6" title="Permanent link">¶</a></h3>
-<ul>
-<li>创建索引<div class="highlight"><pre><span></span><code>CREATE {TAG | EDGE} INDEX [IF NOT EXISTS] &lt;index_name&gt;
-ON {&lt;tag_name&gt; | &lt;edge_name&gt;} (prop_name_list);
-</code></pre></div>
-</li>
-</ul>
-<ul>
-<li>重建索引<div class="highlight"><pre><span></span><code>REBUILD {TAG | EDGE} INDEX &lt;index_name&gt;;
-</code></pre></div>
-</li>
-</ul>
-<h3 id="_16">示例<a class="headerlink" href="#_16" title="Permanent link">¶</a></h3>
-<p>为标签<code>player</code>的属性<code>name</code>创建索引，并且重建索引。</p>
-<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG INDEX player_index_0 on player(name(20));
-nebula&gt; REBUILD TAG INDEX player_index_0;
-</code></pre></div>
-<blockquote>
-<p><strong>说明</strong>：为没有指定长度的变量属性创建索引时，需要指定索引长度。在utf-8编码中，一个中文字符占3字节，请根据变量属性长度设置合适的索引长度。例如10个中文字符，索引长度需要为30。详情请参见<a href="../../3.ngql-guide/14.native-index-statements/1.create-native-index/#_6">创建索引</a>。</p>
-</blockquote>
-<h3 id="lookupmatch">基于索引的<code>LOOKUP</code>和<code>MATCH</code>示例<a class="headerlink" href="#lookupmatch" title="Permanent link">¶</a></h3>
-<p>确保<code>LOOKUP</code>或<code>MATCH</code>有一个索引可用。如果没有，请先创建索引。</p>
-<p>找到标签为<code>player</code>的点的信息，它的<code>name</code>属性值为<code>Tony Parker</code>。</p>
-<div class="highlight"><pre><span></span><code>// 为name属性创建索引player_name_0。
-nebula&gt; CREATE TAG INDEX player_name_0 on player(name(10));
-Execution succeeded (time spent 3465/4150 us)
-
-// 重建索引确保能对已存在数据生效。
-nebula&gt; REBUILD TAG INDEX player_name_0
-+------------+
-| New Job Id |
-+------------+
-| 31         |
-+------------+
-Got 1 rows (time spent 2379/3033 us)
-
-// 使用LOOKUP语句检索点的属性。
-nebula&gt; LOOKUP ON player WHERE player.name == "Tony Parker" \
-YIELD player.name, player.age;
-+-------------+---------------+------------+
-| VertexID    | player.name   | player.age |
-+-------------+---------------+------------+
-| "player101" | "Tony Parker" | 36         |
-+-------------+---------------+------------+
-
-// 使用MATCH语句检索点的属性。
-nebula&gt; MATCH (v:player{name:"Tony Parker"}) RETURN v;
-+-----------------------------------------------------+
-| v                                                   |
-+-----------------------------------------------------+
-| ("player101" :player{age: 36, name: "Tony Parker"}) |
-+-----------------------------------------------------+
-Got 1 rows (time spent 5132/6246 us)
-</code></pre></div>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月6日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月29日</span>
 </small>
 </div>
 </article>
@@ -2370,34 +1526,6 @@ Got 1 rows (time spent 5132/6246 us)
 </a>
 </main>
 <footer class="md-footer">
-<nav aria-label="Footer" class="md-footer__inner md-grid">
-<a class="md-footer__link md-footer__link--prev" href="../3.connect-to-nebula-graph/" rel="prev">
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</div>
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                上一页
-              </span>
-              连接Nebula Graph
-            </div>
-</div>
-</a>
-<a class="md-footer__link md-footer__link--next" href="../6.useful-links/" rel="next">
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                下一页
-              </span>
-              常用链接
-            </div>
-</div>
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
-</div>
-</a>
-</nav>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-footer-copyright">

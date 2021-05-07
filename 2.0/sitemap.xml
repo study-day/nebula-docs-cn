@@ -556,11 +556,23 @@
      <lastmod>2021-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
+     <loc>https://docs.nebula-graph.com.cn/16.eco-tools/0.eco-tool-version/</loc>
+     <lastmod>2021-05-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://docs.nebula-graph.com.cn/16.eco-tools/1.nebula-exchange/</loc>
      <lastmod>2021-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://docs.nebula-graph.com.cn/16.eco-tools/2.nebula-importer/</loc>
+     <lastmod>2021-05-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://docs.nebula-graph.com.cn/16.eco-tools/3.nebula-spark-connector/</loc>
+     <lastmod>2021-05-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://docs.nebula-graph.com.cn/16.eco-tools/4.nebula-flink-connector/</loc>
      <lastmod>2021-05-07</lastmod>
      <changefreq>daily</changefreq>
     </url><url>

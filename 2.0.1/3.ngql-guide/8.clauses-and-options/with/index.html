@@ -720,6 +720,11 @@
     collect()之前处理输出
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#return">
+    结合RETURN语句使用
+  </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1457,6 +1462,11 @@
     collect()之前处理输出
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#return">
+    结合RETURN语句使用
+  </a>
+</li>
 </ul>
 </nav>
 </div>
@@ -1567,11 +1577,27 @@
 | ["Yao Ming", "Vince Carter", "Tracy McGrady"] |
 +-----------------------------------------------+
 </code></pre></div>
+<h2 id="return">结合RETURN语句使用<a class="headerlink" href="#return" title="Permanent link">¶</a></h2>
+<p>在<code>WITH</code>子句中设置别名，并通过<code>RETURN</code>子句输出结果。</p>
+<div class="highlight"><pre><span></span><code>nebula&gt; WITH [1, 2, 3] AS list  RETURN 3 IN list AS r;
++------+
+| r    |
++------+
+| true |
++------+
+
+nebula&gt; WITH 4 AS one, 3 AS two RETURN one &gt; two AS result;
++--------+
+| result |
++--------+
+| true   |
++--------+
+</code></pre></div>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月13日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月7日</span>
 </small>
 </div>
 </article>

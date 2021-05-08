@@ -1481,11 +1481,14 @@
 <li>在nGQL扩展中，必须使用管道符（|），可以忽略偏移量。</li>
 </ul>
 <ul>
-<li>在openCypher方式中，不允许使用管道符，可以使用<code>SKIP</code>指明偏移量。</li>
+<li>
+<p>在openCypher方式中，不允许使用管道符，可以使用<code>SKIP</code>指明偏移量。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在nGQL扩展或openCypher方式中使用<code>LIMIT</code>时，使用<code>ORDER BY</code>子句限制输出顺序非常重要，否则会输出一个不可预知的子集。</p>
+</div>
+</li>
 </ul>
-<blockquote>
-<p><strong>说明</strong>：在nGQL扩展或openCypher方式中使用<code>LIMIT</code>时，使用<code>ORDER BY</code>子句限制输出顺序非常重要，否则会输出一个不可预知的子集。</p>
-</blockquote>
 <h2 id="ngql">nGQL扩展语法<a class="headerlink" href="#ngql" title="Permanent link">¶</a></h2>
 <p>在nGQL扩展中，<code>LIMIT</code>的工作原理与<code>SQL</code>相同，必须和管道符一起使用。<code>LIMIT</code>子句接收一个或两个参数。参数的值必须是非负整数。</p>
 <div class="highlight"><pre><span></span><code>YIELD &lt;var&gt;
@@ -1557,9 +1560,10 @@ nebula&gt; GO FROM "player100" OVER follow REVERSELY \
 </tbody>
 </table>
 <p><code>offset</code>和<code>number_rows</code>可以使用表达式，但是表达式的结果必须是非负整数。</p>
-<blockquote>
-<p><strong>说明</strong>：两个整数组成的分数表达式会自动向下取整。例如<code>8/6</code>向下取整为1。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>两个整数组成的分数表达式会自动向下取整。例如<code>8/6</code>向下取整为1。</p>
+</div>
 <h3 id="_2">示例<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player) RETURN v.name AS Name, v.age AS Age \
         ORDER BY Age LIMIT 5;
@@ -1627,7 +1631,7 @@ nebula&gt; MATCH (v:player{name:"Tim Duncan"}) --&gt; (v2) \
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年3月29日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

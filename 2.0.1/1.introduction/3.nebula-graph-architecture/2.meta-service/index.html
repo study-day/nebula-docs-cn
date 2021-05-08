@@ -1508,9 +1508,10 @@
 </ul>
 <p>所有nebula-metad进程构成了基于Raft协议的集群，其中一个进程是leader，其他进程都是follower。</p>
 <p>leader是由多数派选举出来，只有leader能够对客户端或其他组件提供服务，其他follower作为候补，如果leader出现故障，会在所有follower中选举出新的leader。</p>
-<blockquote>
-<p><strong>说明</strong>：leader和follower的数据通过Raft协议保持一致，因此leader故障和选举新leader不会导致数据不一致。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>leader和follower的数据通过Raft协议保持一致，因此leader故障和选举新leader不会导致数据不一致。</p>
+</div>
 <h2 id="meta_2">Meta服务功能<a class="headerlink" href="#meta_2" title="Permanent link">¶</a></h2>
 <h3 id="_1">管理用户账号<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
 <p>Meta服务中存储了用户的账号和权限信息，当客户端通过账号发送请求给Meta服务，Meta服务会检查账号信息，以及该账号是否有对应的请求权限。</p>
@@ -1531,7 +1532,7 @@
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月13日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

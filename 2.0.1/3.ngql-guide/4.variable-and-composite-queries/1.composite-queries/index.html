@@ -1461,9 +1461,10 @@
 </ul>
 <h2 id="_2">复合查询不支持事务<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>例如一个查询由三个子查询A、B、C组成，A是一个读操作，B是一个计算操作，C是一个写操作，如果在执行过程中，任何一个操作执行失败，则整个结果是未定义的：没有回滚，而且写入的内容取决于执行程序。</p>
-<blockquote>
-<p><strong>说明</strong>：openCypher没有事务要求。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>openCypher没有事务要求。</p>
+</div>
 <h2 id="_3">示例<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <ul>
 <li>OpenCypher语句<div class="highlight"><pre><span></span><code># 子句连接多个查询。
@@ -1502,7 +1503,7 @@ nebula&gt; GO FROM "player100" OVER follow YIELD follow._dst AS id | \
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年3月23日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

@@ -1668,9 +1668,10 @@
 </code></pre></div>
 <h2 id="submit_job_stats">SUBMIT JOB STATS<a class="headerlink" href="#submit_job_stats" title="Permanent link">¶</a></h2>
 <p><code>SUBMIT JOB STATS</code>语句启动一个作业，该作业对当前图空间进行统计。作业完成后，您可以使用<code>SHOW STATS</code>语句列出统计结果。详情请参见<a href="../../7.general-query-statements/6.show/14.show-stats/">SHOW STATS</a>。</p>
-<blockquote>
-<p><strong>说明</strong>：如果存储在Nebula Graph中的数据有变化，为了获取最新的统计结果，请重新执行<code>SUBMIT JOB STATS</code>。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果存储在Nebula Graph中的数据有变化，为了获取最新的统计结果，请重新执行<code>SUBMIT JOB STATS</code>。</p>
+</div>
 <h3 id="_4">示例<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>nebula&gt; SUBMIT JOB STATS;
 +------------+
@@ -1815,7 +1816,7 @@
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月9日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

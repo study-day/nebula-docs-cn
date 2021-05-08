@@ -1448,9 +1448,10 @@ nebula-web-docker_nginx_1      /docker-entrypoint.sh ngin ...   Up      <span cl
 nebula-web-docker_web_1        docker-entrypoint.sh npm r ...   Up      <span class="m">0</span>.0.0.0:32784-&gt;7001/tcp
 </code></pre></div>
 <p>如果没有返回以上结果，则先停止 Studio 重新启动。详细信息，参考 <a href="../../deploy-connect/st-ug-deploy/">部署 Studio</a>。</p>
-<blockquote>
-<p><strong>说明</strong>：如果您之前使用 <code>docker-compose up -d</code> 启动 Studio，必须运行 <code>docker-compose down</code> 命令停止 Studio。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果您之前使用 <code>docker-compose up -d</code> 启动 Studio，必须运行 <code>docker-compose down</code> 命令停止 Studio。</p>
+</div>
 <h3 id="3">第 3 步. 确认访问地址<a class="headerlink" href="#3" title="Permanent link">¶</a></h3>
 <p>如果 Studio 与浏览器在同一台机器上，您可以在浏览器里使用 <code>localhost:7001</code>、<code>127.0.0.1:7001</code> 或者 <code>0.0.0.0:7001</code> 访问 Studio。</p>
 <p>如果两者不在同一台机器上，必须在浏览器里输入 <code>&lt;studio_server_ip&gt;:7001</code>。其中，<code>studio_server_ip</code> 是指部署 Studio 服务的机器的 IP 地址。</p>
@@ -1466,7 +1467,7 @@ nebula-web-docker_web_1        docker-entrypoint.sh npm r ...   Up      <span cl
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月7日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

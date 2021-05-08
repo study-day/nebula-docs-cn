@@ -1436,9 +1436,12 @@
 <div class="highlight"><pre><span></span><code>UPDATE EDGE &lt;src_vid&gt; -&gt; &lt;dest_vid&gt; [@&lt;rank&gt;] OF &lt;edge_type&gt; SET &lt;update_properties&gt; [WHEN &lt;condition&gt;] [YIELD &lt;properties&gt;];
 </code></pre></div>
 <ul>
-<li><code>update_properties</code>：需要修改的属性和值。例如<code>e1.col1 = $^.e1.col2 + 1</code>表示将<code>e1.col1</code>修改为<code>e1.col2+1</code>。<blockquote>
-<p><strong>说明</strong>：<code>$^</code>表示要更新的边.</p>
-</blockquote>
+<li>
+<p><code>update_properties</code>：需要修改的属性和值。例如<code>e1.col1 = $^.e1.col2 + 1</code>表示将<code>e1.col1</code>修改为<code>e1.col2+1</code>。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>$^</code>表示要更新的边.</p>
+</div>
 </li>
 </ul>
 <ul>
@@ -1462,7 +1465,7 @@
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年3月31日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

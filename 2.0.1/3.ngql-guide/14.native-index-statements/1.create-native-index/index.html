@@ -1482,9 +1482,10 @@
 <h1 id="create_index">CREATE INDEX<a class="headerlink" href="#create_index" title="Permanent link">¶</a></h1>
 <p><code>CREATE INDEX</code>语句可以为现存的标签、边类型或属性创建原生索引。</p>
 <p>大多数图查询都是从属性标识的点或边的列表开始检索的。索引可以让大规模图数据库的全局检索更加高效。</p>
-<blockquote>
-<p><strong>说明</strong>：如何创建全文索引，请参见<a href="../../../4.deployment-and-installation/6.deploy-text-based-index/2.deploy-es/">部署全文索引</a>。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如何创建全文索引，请参见<a href="../../../4.deployment-and-installation/6.deploy-text-based-index/2.deploy-es/">部署全文索引</a>。</p>
+</div>
 <h2 id="_1">前提条件<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>创建索引之前，请确保相关的标签或边类型已经创建。如何创建标签和边类型，请参见<a href="../../10.tag-statements/1.create-tag/">CREATE TAG</a>和<a href="../../11.edge-type-statements/1.create-edge/">CREATE EDGE</a>。</p>
 <h2 id="_2">使用索引必读<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
@@ -1528,9 +1529,10 @@
 <ul>
 <li>
 <p>为<strong>变长</strong>字符串属性创建索引时，必须用<code>prop_name(length)</code>指定索引长度。</p>
-<blockquote>
-<p><strong>说明</strong>：长索引会降低Storage服务的扫描性能，以及占用更多内存。建议您将索引长度设置为和要索引的最长字符串相同。索引长度最长为255，超过部分会被截断。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>长索引会降低Storage服务的扫描性能，以及占用更多内存。建议您将索引长度设置为和要索引的最长字符串相同。索引长度最长为255，超过部分会被截断。</p>
+</div>
 </li>
 </ul>
 <ul>
@@ -1578,9 +1580,10 @@ nebula&gt; CREATE TAG INDEX fix ON fix_string(p1);
 </code></pre></div>
 <h2 id="_7">创建复合属性索引<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
 <p>多个属性上的索引称为复合索引。</p>
-<blockquote>
-<p><strong>说明</strong>：不支持跨标签或边类型创建复合索引。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>不支持跨标签或边类型创建复合索引。</p>
+</div>
 <div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG INDEX player_index_1 on player(name(10), age);
 </code></pre></div>
 <p>Nebula Graph的复合索引遵循最左匹配原则，需从组合索引的最左侧开始匹配，详情请参见下方示例。</p>
@@ -1599,7 +1602,7 @@ nebula&gt; LOOKUP ON t WHERE p1 == 1 and p2 == 1 and p3 == 1;
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月16日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

@@ -1560,9 +1560,10 @@
 <ul>
 <li>在 <code>${nebula-old}/etc/nebula-metad.conf</code> 中找到 <code>--data_path</code> 项，其默认值为 <code>data/meta</code>; 为 <strong>metad 数据目录</strong>位置。</li>
 </ul>
-<blockquote>
-<p><strong>说明：</strong> Nebula Graph的实际安装路径可能和本文示意不同，请使用实际路径。您也可以用 <code>ps -ef | grep nebula</code> 中的参数来找到实际使用的配置文件地址。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nebula Graph的实际安装路径可能和本文示意不同，请使用实际路径。您也可以用 <code>ps -ef | grep nebula</code> 中的参数来找到实际使用的配置文件地址。</p>
+</div>
 <h3 id="_4">新版本安装目录<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>本文中新版本安装目录记为 <code>${nebula-new}</code> (例如 <code>/usr/local/nebula-new/</code>).</p>
 <div class="highlight"><pre><span></span><code>&gt; mkdir -p <span class="si">${</span><span class="nv">nebula</span><span class="p">-new</span><span class="si">}</span>
@@ -1587,9 +1588,9 @@
 <span class="o">[</span>INFO<span class="o">]</span> Done
 </code></pre></div>
 <p>运行 <code>ps -ef | grep nebula</code> 检查所有 nebula 服务都已停止。<code>storaged</code> 进程 flush 数据可能要等待 1 分钟。</p>
-<blockquote>
-<p><strong>说明：</strong> 如果超过 20 分钟不能停止服务，<strong>放弃本次升级</strong>，并在论坛提交问题。</p>
-</blockquote>
+<p>!!! Note</p>
+<div class="codehilite"><pre><span></span><code>  如果超过 20 分钟不能停止服务，**放弃本次升级**，并在论坛提交问题。
+</code></pre></div>
 </li>
 <li>
 <p>在每台服务器上运行如下命令。</p>
@@ -1625,32 +1626,21 @@
 </li>
 <li>
 <p>在曾经运行 metad 的服务器上（通常为3台），拷贝 metad 数据、配置文件到新目录。</p>
-<!--
-   - 拷贝storaged数据(如有)
-
-       在 `${nebula-old}/etc/nebula-storaged.conf` 中找到 `--data_path` 项（其默认值为 `data/storage`）
-
-       + 如果旧版本配置**未更改** `--data_path` 项，则可以运行如下命令，将服务端storaged数据拷贝到新目录。
-
-       <div class="highlight"><pre><span></span><code>&gt; mkdir -p <span class="si">${</span><span class="nv">nebula</span><span class="p">-new</span><span class="si">}</span>/data/storage/
-&gt; cp -r <span class="si">${</span><span class="nv">nebula</span><span class="p">-old</span><span class="si">}</span>/data/storage/* <span class="si">${</span><span class="nv">nebula</span><span class="p">-new</span><span class="si">}</span>/data/storage/
-</code></pre></div>
-
-       + 如果旧版本配置更改了默认的服务端数据目录，请根据实际目录拷贝。
-   -->
 <ul>
 <li>拷贝 metad 数据<p>在 <code>${nebula-old}/etc/nebula-metad.conf</code> 中找到 <code>--data_path</code> 项（其默认值为 <code>data/meta</code>）</p>
 <p>+ 如果旧版本配置<strong>未更改</strong> <code>--data_path</code> 项，则可以运行如下命令，将metad数据拷贝到新目录。</p>
 <div class="codehilite"><pre><span></span><code> ```bash
  &gt; mkdir -p ${nebula-new}/data/meta/
  &gt; cp -r ${nebula-old}/data/meta/* ${nebula-new}/data/meta/
- &gt; ```
+ ```
 </code></pre></div>
 <p>+ 如果旧版本配置更改了默认的 metad 目录，请根据实际目录拷贝。</p>
 </li>
 </ul>
 <ul>
-<li>拷贝并修改配置文件<p>+ 编辑新的 metad 配置文件：</p>
+<li>
+<p>拷贝并修改配置文件</p>
+<p>+ 编辑新的 metad 配置文件：</p>
 <div class="codehilite"><pre><span></span><code> ```bash
  &gt; vim ${nebula-new}/nebula-metad.conf
  ```
@@ -1660,11 +1650,12 @@
 
  `--string_index_limit=32`: 升级后 string 对应的[索引的长度](https://docs.nebula-graph.io/2.0/3.ngql-guide/14.native-index-statements/1.create-native-index/)，不加的话系统默认为 64。
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>请确保在每个metad服务器都完成了以上操作。</p>
+</div>
 </li>
 </ul>
-<blockquote>
-<p><strong>说明：</strong> 请确保在每个metad服务器都完成了以上操作。</p>
-</blockquote>
 </li>
 <li>
 <p>在每个 storaged 服务器上, 修改 storaged 配置文件。</p>
@@ -1696,9 +1687,10 @@
    - 检查 metad 日志<code>${nebula-new}/logs/</code> 下的 ERROR 日志。</p>
 </li>
 </ul>
-<blockquote>
-<p><strong>说明：</strong> 如果服务异常：请查看目录<code>${nebula-new}/logs</code>内的 metad 相关日志，并在论坛提交问题。<strong>放弃本次升级，在原目录正常启动 nebula 服务。</strong></p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果服务异常：请查看目录<code>${nebula-new}/logs</code>内的 metad 相关日志，并在论坛提交问题。<strong>放弃本次升级，在原目录正常启动 nebula 服务。</strong></p>
+</div>
 </li>
 <li>
 <p>升级 storaged 数据格式。</p>
@@ -1733,31 +1725,31 @@
 </code></pre></div>
 </li>
 </ul>
-<blockquote>
-<p><strong>说明：</strong> </p>
-<ul>
-<li>如果工具抛出异常请在论坛提交问题。<strong>放弃本次升级，关闭所有已经启动的 metad，在原目录正常启动 nebula 服务。</strong></li>
-<li>请确保在每个storaged服务器都完成了以上操作。</li>
-</ul>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>* 如果工具抛出异常请在论坛提交问题。<strong>放弃本次升级，关闭所有已经启动的 metad，在原目录正常启动 nebula 服务。</strong>
+  * * 请确保在每个storaged服务器都完成了以上操作。</p>
+</div>
 </li>
 <li>
 <p>在每个storaged服务器启动新版本的storaged服务。</p>
 <div class="highlight"><pre><span></span><code>$ sudo <span class="si">${</span><span class="nv">nebula</span><span class="p">-new</span><span class="si">}</span>/scripts/nebula.service start storaged
 $ sudo <span class="si">${</span><span class="nv">nebula</span><span class="p">-new</span><span class="si">}</span>/scripts/nebula.service status storaged
 </code></pre></div>
-<blockquote>
-<p><strong>说明：</strong> 如果有 storaged 未正常启动，请将日志<code>${nebula-new}/logs/</code>在论坛提交问题。<strong>放弃本次升级，关闭所有已经启动的 metad和storaged，在原目录正常启动 nebula 服务。</strong></p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果有 storaged 未正常启动，请将日志<code>${nebula-new}/logs/</code>在论坛提交问题。<strong>放弃本次升级，关闭所有已经启动的 metad和storaged，在原目录正常启动 nebula 服务。</strong></p>
+</div>
 </li>
 <li>
 <p>在每个 graphd 服务器启动新版本的 graphd 服务。</p>
 <div class="highlight"><pre><span></span><code>$ sudo <span class="si">${</span><span class="nv">nebula</span><span class="p">-new</span><span class="si">}</span>/scripts/nebula.service start graphd
 $ sudo <span class="si">${</span><span class="nv">nebula</span><span class="p">-new</span><span class="si">}</span>/scripts/nebula.service status graphd
 </code></pre></div>
-<blockquote>
-<p><strong>说明：</strong> 如果有graphd未正常启动，请将日志<code>${nebula-new}/logs/</code>在论坛提交问题。<strong>放弃本次升级，关闭所有已经启动的 metad,storaged,graphd. 在原目录正常启动 nebula 服务。</strong></p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果有graphd未正常启动，请将日志<code>${nebula-new}/logs/</code>在论坛提交问题。<strong>放弃本次升级，关闭所有已经启动的 metad,storaged,graphd. 在原目录正常启动 nebula 服务。</strong></p>
+</div>
 </li>
 <li>
 <p>使用<a href="https://github.com/vesoft-inc/nebula-console">新版本Nebula Console</a> 连接新的Nebula Graph，验证服务是否可用、数据是否正常。命令行参数，如 graphd 的 IP、端口都不变。</p>
@@ -1775,10 +1767,11 @@ nebula&gt; SHOW STATS;
 <li>
 <p>升级其他客户端。</p>
 <p>所有的客户端都必须升级到对应 v2.0.0 版本。包括但不限于<a href="https://github.com/vesoft-inc/nebula-docker-compose">studio</a>, <a href="https://github.com/vesoft-inc/nebula-python">python</a>, <a href="https://github.com/vesoft-inc/nebula-java">java</a>, <a href="https://github.com/vesoft-inc/nebula-go">go</a>, <a href="https://github.com/vesoft-inc/nebula-cpp">c++</a>, <a href="https://github.com/vesoft-inc/nebula-flink-connector">flink-connector</a>, <a href="https://github.com/vesoft-inc/nebula-spark-utils">spark-util</a>, <a href="https://github.com/vesoft-inc/nebula-bench">benchmark</a>。请找到各 repo 对应的 v2.0.0 branch。</p>
-<blockquote>
-<p><strong>说明：</strong> 不兼容旧版本的通信协议。需重新源代码编译或者下载二进制包。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>不兼容旧版本的通信协议。需重新源代码编译或者下载二进制包。</p>
 <p>(运维)提醒：升级后的数据目录为<code>${nebula-new}/</code>。如有硬盘容量监控、日志 ELK 等，相应改动。</p>
-</blockquote>
+</div>
 </li>
 </ol>
 <h2 id="_6">升级失败回滚<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
@@ -1862,7 +1855,7 @@ nebula&gt; SHOW STATS;
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月22日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

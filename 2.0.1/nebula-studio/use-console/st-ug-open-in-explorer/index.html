@@ -1442,9 +1442,10 @@
 </li>
 <li>
 <p>在命令行中，输入查询语句，并点击 <img alt="表示运行的图标" src="../../figs/st-ug-008.png" title="Run 图标"> 图标。</img></p>
-<blockquote>
-<p><strong>说明</strong>：查询结果中必须包括边起点和终点 VID 信息。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>查询结果中必须包括边起点和终点 VID 信息。</p>
+</div>
 <p>查询语句示例如下：</p>
 <div class="highlight"><pre><span></span><code>nebula&gt; GO FROM 56 OVER action YIELD action._src, action._dst;
 </code></pre></div>
@@ -1485,9 +1486,10 @@
 </li>
 <li>
 <p>在命令行中，输入查询语句，并点击 <img alt="表示运行的图标" src="../../figs/st-ug-008.png" title="Run 图标"/> 图标。</p>
-<blockquote>
-<p><strong>说明</strong>：查询结果中必须包括点的 VID 信息。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>查询结果中必须包括点的 VID 信息。</p>
+</div>
 <p>查询语句示例如下：</p>
 <div class="highlight"><pre><span></span><code>-- 对于本手册中所用数据集，
 -- course 类点的 VID 由 courseName 经 hash() 函数处理得到
@@ -1523,7 +1525,7 @@ nebula&gt; FETCH PROP ON * hash("Media History and Theory");
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月7日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

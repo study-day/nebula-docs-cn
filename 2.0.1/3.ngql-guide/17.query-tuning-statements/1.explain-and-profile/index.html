@@ -1554,9 +1554,10 @@ Execution Plan
 </table>
 <h2 id="dot"><code>dot</code>格式<a class="headerlink" href="#dot" title="Permanent link">¶</a></h2>
 <p><code>dot</code>格式将返回DOT语言的信息，然后您可以使用Graphviz生成计划图。</p>
-<blockquote>
-<p><strong>说明</strong>：Graphviz是一款开源可视化图工具，可以绘制DOT语言脚本描述的图。Graphviz提供一个在线工具，可以预览DOT语言文件，并将它们导出为SVG或JSON等其他格式。详情请参见<a href="https://dreampuf.github.io/GraphvizOnline/">Graphviz Online</a>。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Graphviz是一款开源可视化图工具，可以绘制DOT语言脚本描述的图。Graphviz提供一个在线工具，可以预览DOT语言文件，并将它们导出为SVG或JSON等其他格式。详情请参见<a href="https://dreampuf.github.io/GraphvizOnline/">Graphviz Online</a>。</p>
+</div>
 <div class="highlight"><pre><span></span><code>nebula&gt; EXPLAIN format="dot" SHOW TAGS;
 Execution succeeded (time spent 161/665 us)
 Execution Plan
@@ -1577,7 +1578,7 @@ Execution Plan
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月1日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

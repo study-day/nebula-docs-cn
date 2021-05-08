@@ -1482,13 +1482,13 @@
 <h1 id="_1">用户管理<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>用户管理是Nebula Graph访问控制中不可或缺的组成部分，本文将介绍用户管理的相关语法。</p>
 <p>开启<a href="../1.authentication/">身份验证</a>后，您需要使用已创建的用户才能连接Nebula Graph，而且连接后可以进行的操作也取决于该用户拥有的<a href="../3.role-list/">角色权限</a>。</p>
-<blockquote>
-<p><strong>说明</strong>：</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <ul>
 <li>默认情况下，身份验证功能是关闭的，输入任意用户名和密码都可以连接到Nebula Graph。</li>
 <li>修改权限后，对应的用户需要重新登录才能生效。</li>
 </ul>
-</blockquote>
+</div>
 <h2 id="create_user">创建用户（<code>CREATE USER</code>）<a class="headerlink" href="#create_user" title="Permanent link">¶</a></h2>
 <p>执行<code>CREATE USER</code>语句可以创建新的Nebula Graph用户。当前仅<strong>God</strong>角色用户（即<code>root</code>用户）能够执行<code>CREATE USER</code>语句。</p>
 <ul>
@@ -1571,9 +1571,10 @@
 </ul>
 <h2 id="drop_user">删除用户（<code>DROP USER</code>）<a class="headerlink" href="#drop_user" title="Permanent link">¶</a></h2>
 <p>执行<code>DROP USER</code>语句可以删除用户。当前仅<strong>God</strong>角色用户能够执行<code>DROP USER</code>语句。</p>
-<blockquote>
-<p><strong>说明</strong>：删除用户不会自动断开该用户当前会话，而且权限仍在当前会话中生效。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>删除用户不会自动断开该用户当前会话，而且权限仍在当前会话中生效。</p>
+</div>
 <ul>
 <li>
 <p>语法</p>
@@ -1617,7 +1618,7 @@
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月13日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

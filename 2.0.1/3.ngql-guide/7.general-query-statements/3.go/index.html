@@ -1482,18 +1482,24 @@ OVER &lt;edge_type_list&gt; [{REVERSELY | BIDIRECT}]
 <li><code>REVERSELY | BIDIRECT</code>：默认情况下检索的是<code>&lt;vertex_list&gt;</code>的出边，<code>REVERSELY</code>表示反向，即检索入边，<code>BIDIRECT</code>表示双向，即检索出边和入边。</li>
 </ul>
 <ul>
-<li><code>WHERE &lt;conditions&gt;</code>：指定遍历的过滤条件。您可以在起始点、目的点和边使用<code>WHERE</code>子句，还可以结合<code>AND</code>、<code>OR</code>、<code>NOT</code>、<code>XOR</code>一起使用。详情请参见<a href="../../8.clauses-and-options/where/">WHERE</a>。<blockquote>
-<p><strong>说明</strong>：遍历多个边类型时，<code>WHERE</code>子句有一些限制。例如不支持<code>WHERE edge1.prop1 &gt; edge2.prop2</code>。</p>
-</blockquote>
+<li>
+<p><code>WHERE &lt;conditions&gt;</code>：指定遍历的过滤条件。您可以在起始点、目的点和边使用<code>WHERE</code>子句，还可以结合<code>AND</code>、<code>OR</code>、<code>NOT</code>、<code>XOR</code>一起使用。详情请参见<a href="../../8.clauses-and-options/where/">WHERE</a>。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>遍历多个边类型时，<code>WHERE</code>子句有一些限制。例如不支持<code>WHERE edge1.prop1 &gt; edge2.prop2</code>。</p>
+</div>
 </li>
 </ul>
 <ul>
 <li><code>YIELD [DISTINCT] &lt;return_list&gt;</code>：指定输出结果。详情请参见<a href="../../8.clauses-and-options/yield/">YIELD</a>。如果没有指定，默认返回目的点ID。</li>
 </ul>
 <ul>
-<li><code>ORDER BY</code>：指定输出结果的排序规则。详情请参见<a href="../../8.clauses-and-options/order-by/">ORDER BY</a>。<blockquote>
-<p><strong>说明</strong>：没有指定排序规则时，输出结果的顺序不是固定的。</p>
-</blockquote>
+<li>
+<p><code>ORDER BY</code>：指定输出结果的排序规则。详情请参见<a href="../../8.clauses-and-options/order-by/">ORDER BY</a>。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>没有指定排序规则时，输出结果的顺序不是固定的。</p>
+</div>
 </li>
 </ul>
 <ul>
@@ -1684,7 +1690,7 @@ nebula&gt; $a = GO FROM "player100" OVER follow YIELD follow._src AS src, follow
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月1日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

@@ -1519,9 +1519,10 @@
 <p>本文介绍Compaction的相关信息。</p>
 <p>Nebula Graph中，<code>Compaction</code>是最重要的后台操作，对性能有极其重要的影响。</p>
 <p><code>Compaction</code>操作会读取硬盘上的数据，然后重组数据结构和索引，然后再写回硬盘，可以成倍提升读取性能。将大量数据写入Nebula Graph后，为了提高读取性能，需要手动触发<code>Compaction</code>操作（全量<code>Compaction</code>）。</p>
-<blockquote>
-<p><strong>说明</strong>：<code>Compaction</code>操作会长时间占用硬盘的IO，建议您在业务低峰期（例如凌晨）执行该操作。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>Compaction</code>操作会长时间占用硬盘的IO，建议您在业务低峰期（例如凌晨）执行该操作。</p>
+</div>
 <p>Nebula Graph有两种类型的<code>Compaction</code>操作：自动<code>Compaction</code>和全量<code>Compaction</code>。</p>
 <h2 id="compaction_1">自动<code>Compaction</code><a class="headerlink" href="#compaction_1" title="Permanent link">¶</a></h2>
 <p>自动<code>Compaction</code>是在系统读取数据、写入数据或系统重启时自动触发<code>Compaction</code>操作，提升短时间内的读取性能。默认情况下，自动<code>Compaction</code>是开启状态，可能在业务高峰期触发，导致意外抢占IO影响业务。如果需要完全手动控制<code>Compaction</code>操作，您可以关闭自动<code>Compaction</code>。</p>
@@ -1560,9 +1561,10 @@ nebula&gt; SHOW CONFIGS STORAGE;
 </code></pre></div>
 <h2 id="compaction_3">全量<code>Compaction</code><a class="headerlink" href="#compaction_3" title="Permanent link">¶</a></h2>
 <p>全量<code>Compaction</code>可以对图空间进行大规模后台操作，例如合并文件、删除TTL过期数据等，该操作需要您手动发起。使用如下语句执行全量<code>Compaction</code>操作：</p>
-<blockquote>
-<p><strong>说明</strong>：建议您在业务低峰期（例如凌晨）执行该操作，避免大量占用硬盘IO影响业务。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>建议您在业务低峰期（例如凌晨）执行该操作，避免大量占用硬盘IO影响业务。</p>
+</div>
 <div class="highlight"><pre><span></span><code>nebula&gt; USE &lt;your_graph_space&gt;;
 nebula&gt; SUBMIT JOB COMPACT;
 </code></pre></div>
@@ -1604,7 +1606,7 @@ nebula&gt; SUBMIT JOB COMPACT;
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月22日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

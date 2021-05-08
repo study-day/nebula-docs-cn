@@ -1806,9 +1806,10 @@ Got 4 rows (time spent 1061/2251 us)
 <li><code>CREATE TAG INDEX</code></li>
 <li><code>CREATE EDGE INDEX</code></li>
 </ul>
-<blockquote>
-<p><strong>说明</strong>：默认心跳周期是10秒。修改心跳周期参数<code>heartbeat_interval_secs</code>，请参见<a href="../../5.configurations-and-logs/1.configurations/1.configurations/">配置简介</a>。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>默认心跳周期是10秒。修改心跳周期参数<code>heartbeat_interval_secs</code>，请参见<a href="../../5.configurations-and-logs/1.configurations/1.configurations/">配置简介</a>。</p>
+</div>
 <p>为确保数据同步，后续操作能顺利进行，可采取以下方法之一：</p>
 <ul>
 <li>执行<code>SHOW</code>或<code>DESCRIBE</code>命令检查相应对象的状态，确保创建或修改已完成。如果没有完成，请等待几秒重试。</li>
@@ -2136,8 +2137,8 @@ Got 1 rows (time spent 8206/9335 us)
 <li>
 <p>从VID为<code>player100</code>的球员开始，沿着边<code>follow</code>查找连接的球员，然后检索这些球员的球队。为了合并这两个查询请求，可以使用管道符或临时变量。</p>
 <ul>
-<li>使用管道符</li>
-</ul>
+<li>
+<p>使用管道符</p>
 <div class="highlight"><pre><span></span><code>nebula&gt; GO FROM "player100" OVER follow YIELD follow._dst AS id | \
                 GO FROM $-.id OVER serve YIELD $$.team.name AS Team, \
                 $^.player.name AS Player;
@@ -2170,22 +2171,27 @@ Got 1 rows (time spent 5055/8203 us)
 </tr>
 </tbody>
 </table>
-<ul>
-<li>使用临时变量</li>
+</li>
 </ul>
-<blockquote>
-<p><strong>说明</strong>：当复合语句作为一个整体提交给服务器时，其中的临时变量会在语句结束时被释放。</p>
-</blockquote>
-<p><code>ngql
-  nebula&gt; $var = GO FROM "player100" OVER follow YIELD follow._dst AS id; \
-  GO FROM $var.id OVER serve YIELD $$.team.name AS Team, \
-  $^.player.name AS Player;
-  +---------+-------------+
-  | Team    | Player      |
-  +---------+-------------+
-  | Nuggets | Tony Parker |
-  +---------+-------------+
-  Got 1 rows (time spent 3103/3711 us)</code></p>
+<ul>
+<li>
+<p>使用临时变量</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>当复合语句作为一个整体提交给服务器时，其中的临时变量会在语句结束时被释放。</p>
+</div>
+<div class="highlight"><pre><span></span><code>nebula&gt; $var = GO FROM "player100" OVER follow YIELD follow._dst AS id; \
+GO FROM $var.id OVER serve YIELD $$.team.name AS Team, \
+$^.player.name AS Player;
++---------+-------------+
+| Team    | Player      |
++---------+-------------+
+| Nuggets | Tony Parker |
++---------+-------------+
+Got 1 rows (time spent 3103/3711 us)
+</code></pre></div>
+</li>
+</ul>
 </li>
 </ul>
 <h3 id="fetch"><code>FETCH</code>语句示例<a class="headerlink" href="#fetch" title="Permanent link">¶</a></h3>
@@ -2198,15 +2204,17 @@ Got 1 rows (time spent 5055/8203 us)
 +----------------------------------------------------+
 Got 1 rows (time spent 2006/2406 us)
 </code></pre></div>
-<blockquote>
-<p><strong>说明</strong>：<code>LOOKUP</code>和<code>MATCH</code>的示例在下文的<a href="#_14">索引</a>部分查看。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>LOOKUP</code>和<code>MATCH</code>的示例在下文的<a href="#_14">索引</a>部分查看。</p>
+</div>
 <h2 id="_10">修改点和边<a class="headerlink" href="#_10" title="Permanent link">¶</a></h2>
 <p>您可以使用<code>UPDATE</code>语句或<code>UPSERT</code>语句修改现有数据。</p>
 <p><code>UPSERT</code>是<code>UPDATE</code>和<code>INSERT</code>的结合体。当您使用<code>UPSERT</code>更新一个点或边，如果它不存在，数据库会自动插入一个新的点或边。</p>
-<blockquote>
-<p><strong>说明</strong>：<code>UPSERT</code>操作是基于Nebula Graph的分区进行串行操作，所以执行速度比单独执行<code>INSERT</code>或<code>UPDATE</code>慢。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>UPSERT</code>操作是基于Nebula Graph的分区进行串行操作，所以执行速度比单独执行<code>INSERT</code>或<code>UPDATE</code>慢。</p>
+</div>
 <h3 id="ngql_4">nGQL语法<a class="headerlink" href="#ngql_4" title="Permanent link">¶</a></h3>
 <ul>
 <li><code>UPDATE</code>点<div class="highlight"><pre><span></span><code>UPDATE VERTEX &lt;vid&gt; SET &lt;properties to be updated&gt;
@@ -2328,9 +2336,10 @@ ON {&lt;tag_name&gt; | &lt;edge_name&gt;} (prop_name_list);
 <div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG INDEX player_index_0 on player(name(20));
 nebula&gt; REBUILD TAG INDEX player_index_0;
 </code></pre></div>
-<blockquote>
-<p><strong>说明</strong>：为没有指定长度的变量属性创建索引时，需要指定索引长度。在utf-8编码中，一个中文字符占3字节，请根据变量属性长度设置合适的索引长度。例如10个中文字符，索引长度需要为30。详情请参见<a href="../../3.ngql-guide/14.native-index-statements/1.create-native-index/#_6">创建索引</a>。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>为没有指定长度的变量属性创建索引时，需要指定索引长度。在utf-8编码中，一个中文字符占3字节，请根据变量属性长度设置合适的索引长度。例如10个中文字符，索引长度需要为30。详情请参见<a href="../../3.ngql-guide/14.native-index-statements/1.create-native-index/#_6">创建索引</a>。</p>
+</div>
 <h3 id="lookupmatch">基于索引的<code>LOOKUP</code>和<code>MATCH</code>示例<a class="headerlink" href="#lookupmatch" title="Permanent link">¶</a></h3>
 <p>确保<code>LOOKUP</code>或<code>MATCH</code>有一个索引可用。如果没有，请先创建索引。</p>
 <p>找到标签为<code>player</code>的点的信息，它的<code>name</code>属性值为<code>Tony Parker</code>。</p>
@@ -2369,7 +2378,7 @@ Got 1 rows (time spent 5132/6246 us)
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月6日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

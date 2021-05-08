@@ -1775,9 +1775,10 @@
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>说明</strong>：请注意<a href="http://www.opencypher.org/">openCypher 9</a>和<a href="https://neo4j.com/developer/cypher/">Cypher</a>在语法和许可上有一些不同。例如Cypher要求所有Cypher语句必须显式地在一个事务中执行，而openCypher没有这样的要求。另外，nGQL暂不支持事务。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>请注意<a href="http://www.opencypher.org/">openCypher 9</a>和<a href="https://neo4j.com/developer/cypher/">Cypher</a>在语法和许可上有一些不同。例如Cypher要求所有Cypher语句必须显式地在一个事务中执行，而openCypher没有这样的要求。另外，nGQL暂不支持事务。</p>
+</div>
 <h3 id="ngql">哪里可以找到更多nGQL的示例？<a class="headerlink" href="#ngql" title="Permanent link">¶</a></h3>
 <p>您可以在Nebula Graph GitHub的<a href="https://github.com/vesoft-inc/nebula-graph/tree/master/tests/tck/features">features</a>目录内查看超过2500条nGQL示例。</p>
 <p>features目录内包含很多.features格式的文件，每个文件都记录了使用nGQL的场景和示例。例如：</p>
@@ -1977,9 +1978,10 @@ This <span class="nb">source</span> code is licensed under Apache <span class="m
 <p>您可以使用如下telnet命令检查端口状态：</p>
 <div class="highlight"><pre><span></span><code>telnet &lt;ip&gt; &lt;port&gt;
 </code></pre></div>
-<blockquote>
-<p><strong>说明：</strong> 如果无法使用telnet命令，请先检查主机中是否安装并启动了telnet。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果无法使用telnet命令，请先检查主机中是否安装并启动了telnet。</p>
+</div>
 <p>示例：</p>
 <div class="highlight"><pre><span></span><code>// 如果端口已开放：
 $ telnet <span class="m">192</span>.168.1.10 <span class="m">9669</span>
@@ -1996,7 +1998,7 @@ telnet: connect to address <span class="m">192</span>.168.1.10: Connection refus
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月7日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

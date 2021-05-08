@@ -1683,16 +1683,18 @@ git rebase upstream/master
 <p>从主分支创建并切换分支：</p>
 <div class="highlight"><pre><span></span><code>git checkout -b myfeature
 </code></pre></div>
+<p>!!! Note</p>
+<div class="codehilite"><pre><span></span><code>  由于一个PR通常包含多个commit，在合并至master时容易被挤压（squash），因此强烈建议您创建一个独立的分支进行更改。合并后，这个分支可以被丢弃，因此可以使用上述rebase命令将本地master与upstream同步。此外，如果直接将commit提交至 master，您可以需要在master分支使用hard reset，例如：
+
+  ```bash
+  git fetch upstream
+  git checkout master
+  git reset --hard upstream/master
+  git push --force origin master
+  ```
+</code></pre></div>
 </li>
 </ol>
-<blockquote>
-<p><strong>说明</strong>：由于一个PR通常包含多个commit，在合并至master时容易被挤压（squash），因此强烈建议您创建一个独立的分支进行更改。合并后，这个分支可以被丢弃，因此可以使用上述rebase命令将本地master与upstream同步。此外，如果直接将commit提交至 master，您可以需要在master分支使用hard reset，例如：</p>
-</blockquote>
-<div class="highlight"><pre><span></span><code>git fetch upstream
-git checkout master
-git reset --hard upstream/master
-git push --force origin master
-</code></pre></div>
 <h2 id="step_4">Step 4：开发<a class="headerlink" href="#step_4" title="Permanent link">¶</a></h2>
 <h3 id="_3">代码风格<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <p><strong>Nebula Graph</strong>采用<code>cpplint</code>来确保代码符合Google的代码风格指南。检查器将在提交代码之前执行。</p>
@@ -1700,9 +1702,10 @@ git push --force origin master
 <p>请为您的新功能或Bug修复添加单元测试。</p>
 <h3 id="_5">构建代码时开启单元测试<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
 <p>详情请参见<a href="../../4.deployment-and-installation/2.compile-and-install-nebula-graph/1.install-nebula-graph-by-compiling-the-source-code/">使用源码安装Nebula Graph</a>。</p>
-<blockquote>
-<p><strong>说明</strong>：请确保已设置<code>-DENABLE_TESTING = ON</code>启用构建单元测试。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>请确保已设置<code>-DENABLE_TESTING = ON</code>启用构建单元测试。</p>
+</div>
 <h3 id="_6">运行所有单元测试<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
 <p>在<code>nebula</code>根目录执行如下命令：</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> nebula/build
@@ -1738,7 +1741,7 @@ git rebase upstream/master
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月6日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

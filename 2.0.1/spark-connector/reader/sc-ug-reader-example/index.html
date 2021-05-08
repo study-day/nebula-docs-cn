@@ -1432,18 +1432,18 @@
 <h2 id="_2">操作步骤<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>参考以下步骤使用 Nebula Spark Connector Reader：</p>
 <ol>
-<li>在 Maven 项目的 <code>pom.xml</code> 文件中加入 <code>nebula-spark</code> 依赖。<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+<li>
+<p>在 Maven 项目的 <code>pom.xml</code> 文件中加入 <code>nebula-spark</code> 依赖。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>com.vesoft<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>nebula-spark<span class="nt">&lt;/artifactId&gt;</span>
   <span class="nt">&lt;version&gt;</span>1.x.y<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre></div>
+<p>!!! Note</p>
+<div class="codehilite"><pre><span></span><code> `&lt;version&gt;` 建议配置为最新发布的 Nebula Java Client 版本号。您可以在 [nebula-java 仓库的 Releases 页面](https://github.com/vesoft-inc/nebula-java/releases "点击前往 GitHub 网站") 查看最新的 v1.x 版本。
+</code></pre></div>
 </li>
-</ol>
-<blockquote>
-<p><strong>说明</strong>：<code>&lt;version&gt;</code> 建议配置为最新发布的 Nebula Java Client 版本号。您可以在 <a href="https://github.com/vesoft-inc/nebula-java/releases" title="点击前往 GitHub 网站">nebula-java 仓库的 Releases 页面</a> 查看最新的 v1.x 版本。</p>
-</blockquote>
-<ol>
 <li>
 <p>构建 <code>SparkSession</code> 类。这是 Spark SQL 的编码入口。</p>
 <div class="highlight"><pre><span></span><code>val sparkConf = new SparkConf
@@ -1536,7 +1536,7 @@ only showing top 20 rows
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月7日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

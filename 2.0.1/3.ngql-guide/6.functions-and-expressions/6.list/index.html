@@ -1475,9 +1475,10 @@
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>说明</strong>：如果参数为<code>NULL</code>，则输出结果是未定义的。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果参数为<code>NULL</code>，则输出结果是未定义的。</p>
+</div>
 <h2 id="_2">示例<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>nebula&gt; WITH [NULL, 4923, 'abc', 521, 487] AS ids \
         RETURN reverse(ids), tail(ids), head(ids), last(ids), coalesce(ids);
@@ -1524,7 +1525,7 @@ nebula&gt; MATCH p = (a:player)-[]-&gt;(b)-[]-&gt;(c:team) WHERE a.name == "Tim 
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年3月24日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

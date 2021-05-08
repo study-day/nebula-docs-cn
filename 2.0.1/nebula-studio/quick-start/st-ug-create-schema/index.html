@@ -1418,10 +1418,10 @@
 </a>
 <h1 id="schema">创建 Schema<a class="headerlink" href="#schema" title="Permanent link">¶</a></h1>
 <p>在 Nebula Graph 中，您必须先有 Schema，再向其中写入点数据和边数据。本文描述如何使用 Nebula Graph 的 <strong>控制台</strong> 或 <strong>Schema</strong> 功能创建 Schema。</p>
-<blockquote>
-<p><strong>说明</strong>：您也可以使用 nebula-console 创建 Schema。详细信息，参考 <a href="https://github.com/vesoft-inc/nebula-docker-compose/blob/master/README_zh-CN.md">使用 Docker Compose 部署 Nebula Graph
-</a> 和 <a href="https://docs.nebula-graph.com.cn/manual-CN/1.overview/2.quick-start/1.get-started/">Nebula Graph 快速开始</a>。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>您也可以使用 nebula-console 创建 Schema。详细信息，参考 <a href="https://github.com/vesoft-inc/nebula-docker-compose/blob/master/README_zh-CN.md">使用 Docker Compose 部署 Nebula Graph</a> 和 <a href="https://docs.nebula-graph.com.cn/manual-CN/1.overview/2.quick-start/1.get-started/">Nebula Graph 快速开始</a>。</p>
+</div>
 <h2 id="_1">前提条件<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>在 Studio 上创建 Schema 之前，您需要确认以下信息：</p>
 <ul>
@@ -1434,11 +1434,12 @@
 <li>您已经规划好了 Schema 的要素。</li>
 </ul>
 <ul>
-<li>已经创建了图空间。<blockquote>
-<p><strong>说明</strong>：本示例假设已经创建了图空间。如果您的账号拥有 GOD 权限，也可以在 <strong>控制台</strong> 或 <strong>Schema</strong> 上创建一个图空间。</p>
-</blockquote>
-</li>
+<li>已经创建了图空间。</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>本示例假设已经创建了图空间。如果您的账号拥有 GOD 权限，也可以在 <strong>控制台</strong> 或 <strong>Schema</strong> 上创建一个图空间。</p>
+</div>
 <h2 id="schema_schema">使用 Schema 管理功能创建 Schema<a class="headerlink" href="#schema_schema" title="Permanent link">¶</a></h2>
 <p>按以下步骤使用 <strong>Schema</strong> 创建 Schema：</p>
 <ol>
@@ -1491,7 +1492,7 @@ DESCRIBE EDGE action;
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月7日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

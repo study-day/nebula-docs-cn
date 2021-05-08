@@ -1516,11 +1516,16 @@
 </code></pre></div>
 <h3 id="_3">边类型名称<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <ul>
-<li><code>IF NOT EXISTS</code>：检测待创建的边类型是否存在，只有不存在时，才会创建边类型。<blockquote>
-<p><strong>说明</strong>：仅检测边类型的名称，不会检测具体属性。
-- <code>edge_type_name</code>：每个图空间内的边类型必须是唯一的。边类型名称设置后无法修改。允许的边类型名称规则与图空间名称规则相同，详情请参见<a href="../../20.appendix/keywords-and-reserved-words/">关键字和保留字</a>。</p>
-</blockquote>
+<li>
+<p><code>IF NOT EXISTS</code>：检测待创建的边类型是否存在，只有不存在时，才会创建边类型。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>仅检测边类型的名称，不会检测具体属性。</p>
+</div>
 </li>
+</ul>
+<ul>
+<li><code>edge_type_name</code>：每个图空间内的边类型必须是唯一的。边类型名称设置后无法修改。允许的边类型名称规则与图空间名称规则相同，详情请参见<a href="../../20.appendix/keywords-and-reserved-words/">关键字和保留字</a>。</li>
 </ul>
 <h3 id="_4">边类型属性<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <ul>
@@ -1566,7 +1571,7 @@ nebula&gt; CREATE EDGE e1(p1 string, p2 int, p3 timestamp) \
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月13日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

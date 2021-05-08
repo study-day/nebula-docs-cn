@@ -1468,9 +1468,10 @@
 <h1 id="_1">身份验证<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>身份验证用于将会话映射到特定用户，从而实现访问控制。</p>
 <p>当客户端连接到Nebula Graph时，Nebula Graph会创建一个会话，会话中存储连接的各种信息，如果开启了身份验证，就会将会话映射到对应的用户。</p>
-<blockquote>
-<p><strong>说明</strong>：默认情况下，身份验证功能是关闭的，输入任意用户名和密码都可以连接到Nebula Graph。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>默认情况下，身份验证功能是关闭的，输入任意用户名和密码都可以连接到Nebula Graph。</p>
+</div>
 <p>Nebula Graph支持两种身份验证方式：本地身份验证和LDAP验证。</p>
 <h2 id="_2">本地身份验证<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>本地身份验证是指在服务器本地存储用户名、加密密码，当用户尝试访问Nebula Graph时，将进行身份验证。</p>
@@ -1483,9 +1484,10 @@
 <p>重启Nebula Graph服务。</p>
 </li>
 </ol>
-<blockquote>
-<p><strong>说明</strong>：开启身份验证后，默认的God角色账号为<code>root</code>，密码为<code>nebula</code>。角色详情请参见<a href="../3.role-list/">内置角色权限</a>。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>开启身份验证后，默认的God角色账号为<code>root</code>，密码为<code>nebula</code>。角色详情请参见<a href="../3.role-list/">内置角色权限</a>。</p>
+</div>
 <h2 id="ldap">LDAP验证<a class="headerlink" href="#ldap" title="Permanent link">¶</a></h2>
 <p>轻型目录访问协议（LDAP）是用于访问目录服务的轻型客户端-服务器协议，可以实现账号集中管理。 启用LDAP验证后，LDAP中存储的用户优先级高于本地用户。例如本地和LDAP都有一个名为<code>Amber</code>的用户，则优先从LDAP读取该用户的设置和角色信息。</p>
 <h3 id="ldap_1">启用LDAP验证<a class="headerlink" href="#ldap_1" title="Permanent link">¶</a></h3>
@@ -1494,7 +1496,7 @@
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年3月23日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

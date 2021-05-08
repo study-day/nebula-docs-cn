@@ -1459,15 +1459,16 @@ nebula&gt; USE space2;
 # 检索图空间space2。无法从space1读取任何数据，检索的点和边与space1无关。
 nebula&gt; GO FROM 2 OVER edge2;
 </code></pre></div>
-<blockquote>
-<p><strong>说明</strong>：不能在一条语句中同时操作两个图空间。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>不能在一条语句中同时操作两个图空间。</p>
+</div>
 <p>与Fabric Cypher不同，Nebula Graph的图空间彼此之间是完全隔离的，将一个图空间作为工作空间后，您无法访问其他空间。检索新图空间的唯一方法是通过<code>USE</code>语句切换。Fabric Cypher可以在一条语句中使用两个图空间。</p>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年3月30日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

@@ -1491,9 +1491,10 @@
 </a>
 <h1 id="storage">Storage服务配置<a class="headerlink" href="#storage" title="Permanent link">¶</a></h1>
 <p>Storage服务提供了两份初始配置文件<code>nebula-storaged.conf.default</code>和<code>nebula-storaged.conf.production</code>，方便您在不同场景中使用。文件的默认路径为<code>/usr/local/nebula/etc/</code>。</p>
-<blockquote>
-<p><strong>说明</strong>：Raft Listener的配置和Storage服务配置不同，详情请参见<a href="../../../4.deployment-and-installation/6.deploy-text-based-index/3.deploy-listener/">部署Raft listener</a>。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Raft Listener的配置和Storage服务配置不同，详情请参见<a href="../../../4.deployment-and-installation/6.deploy-text-based-index/3.deploy-listener/">部署Raft listener</a>。</p>
+</div>
 <h2 id="_1">配置文件使用方式<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>首次启动时，Storage服务会从配置文件<code>nebula-storaged.conf</code>中读取配置信息。您需要把初始配置文件的后缀<code>.default</code>或<code>.production</code>删除，Storage服务才能将其识别为配置文件。</p>
 <p>如果修改了配置文件，希望新配置生效，请在配置文件开头添加<code>--local_config=true</code>再重启服务，否则会从缓存中读取过期配置。</p>
@@ -1527,13 +1528,13 @@
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>说明：</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <ul>
 <li>在插入<a href="../../../3.ngql-guide/3.data-types/4.date-and-time/">时间类型</a>的属性值时，Nebula Graph会根据<code>timezone_name</code>设置的时区将该时间值转换成相应的UTC时间，因此在查询中返回的时间类型属性值为UTC时间。</li>
 <li><code>timezone_name</code>参数只用于转换Nebula Graph中存储的数据，Nebula Graph进程中其它时区相关数据，例如日志打印的时间等，仍然使用主机系统默认的时区。</li>
 </ul>
-</blockquote>
+</div>
 <h2 id="logging">logging配置<a class="headerlink" href="#logging" title="Permanent link">¶</a></h2>
 <table>
 <thead>
@@ -1801,7 +1802,7 @@ disable_auto_compactions
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月13日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

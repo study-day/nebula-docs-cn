@@ -1476,9 +1476,10 @@
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>说明</strong>：返回值的类型取决于提供的参数，以及表达式的语义。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>返回值的类型取决于提供的参数，以及表达式的语义。</p>
+</div>
 <h2 id="_2">示例<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>nebula&gt; RETURN reduce(totalNum = 10, n IN range(1, 3) | totalNum + n) AS r;
 +----+
@@ -1531,7 +1532,7 @@ nebula&gt; LOOKUP ON player WHERE player.name == "Tony Parker" \
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年3月24日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

@@ -1453,14 +1453,15 @@ nebula&gt; GO FROM "player100" OVER serve YIELD serve._dst AS id | DELETE VERTEX
 </code></pre></div>
 <h2 id="_3">删除过程<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>Nebula Graph检索点的出边和入边并删除这些边，然后删除点的信息。</p>
-<blockquote>
-<p><strong>说明</strong>：目前还不能保证操作的原子性，如果发生故障请重试。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>目前还不能保证操作的原子性，如果发生故障请重试。</p>
+</div>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年3月31日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

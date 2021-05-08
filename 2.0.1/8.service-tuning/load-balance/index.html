@@ -1575,9 +1575,9 @@
 </li>
 <li>
 <p>等待所有子任务完成，负载均衡进程结束，执行命令<code>SHOW HOSTS</code>确认分片已经均衡分布。</p>
-<blockquote>
-<p><strong>说明</strong>：<code>BALANCE DATA</code>不会均衡leader的分布。均衡leader请参见<a href="#leader">均衡leader分布</a>。</p>
-</blockquote>
+<p>!!! Note</p>
+<div class="codehilite"><pre><span></span><code>  `BALANCE DATA`不会均衡leader的分布。均衡leader请参见[均衡leader分布](#leader)。
+</code></pre></div>
 <div class="highlight"><pre><span></span><code>nebula&gt; SHOW HOSTS;
 +-------------+------+----------+--------------+-----------------------------------+------------------------+
 | Host        | Port | Status   | Leader count | Leader distribution               | Partition distribution |
@@ -1670,7 +1670,7 @@
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月13日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

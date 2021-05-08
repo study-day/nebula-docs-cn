@@ -1450,42 +1450,63 @@
 <h3 id="_4">备份<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>为了备份数据，BR会发送备份请求给leader的metad进程，触发备份。详细说明如下：</p>
 <ol>
-<li>验证BR访问Meta服务器和Storage服务器的SSH登录信息。<blockquote>
-<p><strong>说明</strong>：如果必须使用云存储，例如Alibaba Cloud OSS或Amazon S3，还需要验证它们的客户端安装和配置。</p>
-</blockquote>
+<li>
+<p>验证BR访问Meta服务器和Storage服务器的SSH登录信息。
+    !!! Note</p>
+<div class="codehilite"><pre><span></span><code>  如果必须使用云存储，例如Alibaba Cloud OSS或Amazon S3，还需要验证它们的客户端安装和配置。
+</code></pre></div>
 </li>
-<li>BR发起请求创建备份文件。</li>
-<li>leader的metad进程被锁定。<blockquote>
-<p><strong>注意</strong>：从此时起至第9步结束，您无法在指定图空间内执行任何nGQL的DDL语句。</p>
-</blockquote>
+<li>
+<p>BR发起请求创建备份文件。</p>
 </li>
-<li>leader的metad进程阻塞指定图空间的写请求。<blockquote>
-<p><strong>注意</strong>：从此时起至第7步结束，您无法在指定图空间内执行任何nGQL的DML语句，但是可以执行DQL语句。</p>
-</blockquote>
+<li>
+<p>leader的metad进程被锁定。
+    !!! Note</p>
+<div class="codehilite"><pre><span></span><code>  从此时起至第9步结束，您无法在指定图空间内执行任何nGQL的DDL语句。
+</code></pre></div>
 </li>
-<li>leader的metad进程发送请求至storaged进程，请求快照文件名称。</li>
+<li>
+<p>leader的metad进程阻塞指定图空间的写请求。</p>
+<p>!!! Note</p>
+<div class="codehilite"><pre><span></span><code>  从此时起至第7步结束，您无法在指定图空间内执行任何nGQL的DML语句，但是可以执行DQL语句。
+</code></pre></div>
+</li>
+<li>
+<p>leader的metad进程发送请求至storaged进程，请求快照文件名称。</p>
+</li>
 <li>leader的metad进程扫描本地RocksDB文件，输出为SST（Static Sorted Table）格式文件。</li>
-<li>leader的metad进程解除阻塞指定图空间的写请求。<blockquote>
-<p><strong>说明</strong>：从此时起，您可以在指定图空间内执行nGQL的DML语句。</p>
-</blockquote>
+<li>
+<p>leader的metad进程解除阻塞指定图空间的写请求。</p>
+<p>!!! Note</p>
+<div class="codehilite"><pre><span></span><code>  从此时起，您可以在指定图空间内执行nGQL的DML语句。
+</code></pre></div>
+<ol>
+<li>leader的metad进程回应BR，包含的Meta数据和快照信息如下：
+ - thrift格式信息
+ - 图空间分区信息
+ - 每个分区的Raft日志提交ID
+ - 快照信息（每个快照存储进程的目录）
+ - Meta服务器SST格式文件名称
+ - 备份文件名称</li>
+<li>
+<p>leader的metad进程解除锁定。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>从此时起，您可以在指定图空间内执行任何nGQL的DDL语句。</p>
+</div>
 </li>
-<li>leader的metad进程回应BR，包含的Meta数据和快照信息如下：<ul>
-<li>thrift格式信息</li>
-<li>图空间分区信息</li>
-<li>每个分区的Raft日志提交ID</li>
-<li>快照信息（每个快照存储进程的目录）</li>
-<li>Meta服务器SST格式文件名称</li>
-<li>备份文件名称</li>
-</ul>
+</ol>
 </li>
-<li>leader的metad进程解除锁定。<blockquote>
-<p><strong>说明</strong>：从此时起，您可以在指定图空间内执行任何nGQL的DDL语句。</p>
-</blockquote>
+<li>
+<p>BR通过SSH登录至leader所在的Meta服务器和所有Storage服务器，然后备份文件。</p>
 </li>
-<li>BR通过SSH登录至leader所在的Meta服务器和所有Storage服务器，然后备份文件。</li>
 <li>如果使用的是Alibaba Cloud OSS或Amazon S3，BR会调用命令将备份文件上传至云存储中。
-    &gt;<strong>注意</strong>：本步骤会大量读取磁盘，建议使用万兆网络保证速率。如果上传过程中出现网络错误，备份会失败，必须重新执行备份操作。目前备份过程不支持断点续传。</li>
+    !!! Note<div class="codehilite"><pre><span></span><code>  本步骤会大量读取磁盘，建议使用万兆网络保证速率。如果上传过程中出现网络错误，备份会失败，必须重新执行备份操作。目前备份过程不支持断点续传。
+</code></pre></div>
+<ol>
 <li>BR发起请求清理Storage服务器的快照，备份完成。</li>
+</ol>
+</li>
 </ol>
 <p>下图展示了备份的具体流程。</p>
 <p><img alt="The figure shows the backup procedure" src="https://docs.nebula-graph.io/2.0/figs/ng-ug-001.png" title="Implementation of backup"/></p>
@@ -1500,11 +1521,15 @@
 </blockquote>
 <p>恢复过程的详细说明如下：</p>
 <ol>
-<li>验证BR访问Meta服务器和Storage服务器的SSH登录信息。<blockquote>
-<p><strong>说明</strong>：如果必须使用云存储，例如Alibaba Cloud OSS或Amazon S3，还需要验证它们的客户端安装和配置。</p>
-</blockquote>
+<li>
+<p>验证BR访问Meta服务器和Storage服务器的SSH登录信息。
+    !!! Note</p>
+<div class="codehilite"><pre><span></span><code>  如果必须使用云存储，例如Alibaba Cloud OSS或Amazon S3，还需要验证它们的客户端安装和配置。
+</code></pre></div>
 </li>
-<li>BR从外部存储或云存储中下载Meta信息（非完整数据）。</li>
+<li>
+<p>BR从外部存储或云存储中下载Meta信息（非完整数据）。</p>
+</li>
 <li>BR验证集群的拓扑结构，确保原集群和目标集群的主机数量一致。</li>
 <li>BR远程停止Meta服务和Storage服务。</li>
 <li>BR通过SSH登录至leader所在的Meta服务器和所有Storage服务器，然后删除现有的数据文件。</li>
@@ -1526,7 +1551,7 @@
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年3月23日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

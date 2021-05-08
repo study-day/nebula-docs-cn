@@ -1421,9 +1421,12 @@
 <h2 id="_1">前提条件<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>在部署 Docker 版 Studio 之前，您需要确认以下信息：</p>
 <ul>
-<li>Nebula Graph 服务已经部署并启动。详细信息，参考<a href="https://docs.nebula-graph.com.cn/2.0.1/4.deployment-and-installation/1.resource-preparations/" title="点击前往 Nebula Graph 安装部署">Nebula Graph安装部署</a>。<blockquote>
-<p><strong>说明</strong>：您可以使用Docker Compose或RPM方式部署并启动 Nebula Graph 服务。如果您刚开始使用 Nebula Graph，建议您使用 Docker Compose 部署 Nebula Graph。详细信息参考 <a href="https://github.com/vesoft-inc/nebula-docker-compose/blob/master/README_zh-CN.md" title="点击前往 GitHub 网站">使用 Docker Compose 部署 Nebula Graph</a>。</p>
-</blockquote>
+<li>
+<p>Nebula Graph 服务已经部署并启动。详细信息，参考<a href="https://docs.nebula-graph.com.cn/2.0.1/4.deployment-and-installation/1.resource-preparations/" title="点击前往 Nebula Graph 安装部署">Nebula Graph安装部署</a>。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>您可以使用Docker Compose或RPM方式部署并启动 Nebula Graph 服务。如果您刚开始使用 Nebula Graph，建议您使用 Docker Compose 部署 Nebula Graph。详细信息参考 <a href="https://github.com/vesoft-inc/nebula-docker-compose/blob/master/README_zh-CN.md" title="点击前往 GitHub 网站">使用 Docker Compose 部署 Nebula Graph</a>。</p>
+</div>
 </li>
 </ul>
 <ul>
@@ -1474,9 +1477,10 @@ Creating docker_nginx_1    ... <span class="k">done</span>
 </li>
 <li>
 <p>启动成功后，在浏览器地址栏输入 <code>http://ip address:7001</code>。</p>
-<blockquote>
-<p><strong>说明</strong>：在运行 Docker 版 Studio 的机器上，您可以运行 <code>ifconfig</code> 或者 <code>ipconfig</code> 获取本机 IP 地址。如果您使用这台机器访问 Studio，可以在浏览器地址栏里输入 <code>http://localhost:7001</code>。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>在运行 Docker 版 Studio 的机器上，您可以运行 <code>ifconfig</code> 或者 <code>ipconfig</code> 获取本机 IP 地址。如果您使用这台机器访问 Studio，可以在浏览器地址栏里输入 <code>http://localhost:7001</code>。</p>
+</div>
 <p>如果您在浏览器窗口中能看到以下登录界面，表示您已经成功部署并启动 Studio。</p>
 <p><img alt="Nebula Graph Studio 登录界面" src="../../figs/st-ug-001.png" title="Nebula Graph Studio 登录界面"/></p>
 </li>
@@ -1511,7 +1515,7 @@ $ npm run start
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月28日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

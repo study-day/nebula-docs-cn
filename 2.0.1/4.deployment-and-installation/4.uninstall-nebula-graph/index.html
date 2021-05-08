@@ -1493,9 +1493,10 @@
 <p>停止Nebula Graph服务。详情请参见<a href="../../2.quick-start/5.start-stop-service/">管理Nebula Graph服务</a>。</p>
 <h2 id="1">步骤1：删除数据和元数据文件<a class="headerlink" href="#1" title="Permanent link">¶</a></h2>
 <p>如果您在配置文件内修改了数据文件的路径，可能会导致安装路径和数据文件保存路径不一致，因此需要查看您的配置文件，确认数据文件保存路径，然后手动删除数据文件目录。</p>
-<blockquote>
-<p><strong>说明</strong>：如果是集群架构，需要删除所有Storage服务节点的数据文件。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果是集群架构，需要删除所有Storage服务节点的数据文件。</p>
+</div>
 <ol>
 <li>
 <p>检查Storage服务的<a href="../../5.configurations-and-logs/1.configurations/4.storage-config/#disk">disk配置</a>。例如：</p>
@@ -1514,9 +1515,10 @@
 </ol>
 <h2 id="2">步骤2：卸载安装目录<a class="headerlink" href="#2" title="Permanent link">¶</a></h2>
 <p>请删除整个安装目录，包括<code>cluster.id</code>文件。</p>
-<blockquote>
-<p><strong>说明</strong>：安装路径为参数<code>--prefix</code>指定的路径。默认路径为<code>/usr/local/nebula</code>。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>安装路径为参数<code>--prefix</code>指定的路径。默认路径为<code>/usr/local/nebula</code>。</p>
+</div>
 <h3 id="nebula_graph_1">卸载编译安装的Nebula Graph<a class="headerlink" href="#nebula_graph_1" title="Permanent link">¶</a></h3>
 <p>找到Nebula Graph的安装目录，删除整个安装目录。</p>
 <h3 id="rpmnebula_graph">卸载RPM包安装的Nebula Graph<a class="headerlink" href="#rpmnebula_graph" title="Permanent link">¶</a></h3>

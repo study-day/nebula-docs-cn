@@ -2052,9 +2052,10 @@ $ <span class="nb">source</span> /opt/vesoft/toolset/gcc/7.5.0/enable
 <li>
 <p>问题 2：如何获取RocksDB实例数量？</p>
 <p>答：在<code>etc</code>目录内查看配置文件<code>nebula-storaged.conf</code>，<code>--data_path</code>选项中的每个目录对应一个RocksDB实例，目录总数即是RocksDB实例数量。</p>
-<blockquote>
-<p><strong>说明</strong>：您可以在配置文件<code>nebula-storaged.conf</code>中添加<code>--enable_partitioned_index_filter=true</code>来降低bloom过滤器占用的内存大小，但是在某些随机寻道（random-seek）的情况下，可能会降低读取性能。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>您可以在配置文件<code>nebula-storaged.conf</code>中添加<code>--enable_partitioned_index_filter=true</code>来降低bloom过滤器占用的内存大小，但是在某些随机寻道（random-seek）的情况下，可能会降低读取性能。</p>
+</div>
 </li>
 </ul>
 <h2 id="_12">关于存储设备<a class="headerlink" href="#_12" title="Permanent link">¶</a></h2>
@@ -2065,7 +2066,7 @@ $ <span class="nb">source</span> /opt/vesoft/toolset/gcc/7.5.0/enable
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月7日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

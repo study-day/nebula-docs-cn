@@ -1523,9 +1523,10 @@
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>说明</strong>：所有搜索或匹配都区分大小写。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>所有搜索或匹配都区分大小写。</p>
+</div>
 <h2 id="_2">示例<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <h3 id="_3"><code>+</code><a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>nebula&gt; RETURN 'a' + 'b';
@@ -1600,9 +1601,10 @@ nebula&gt; RETURN 'apple' STARTS WITH 'b','apple' NOT STARTS WITH 'app'
 +---------------------------+-------------------------+-------------------------+-------------------------+
 </code></pre></div>
 <h3 id="_4">正则表达式<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
-<blockquote>
-<p><strong>说明</strong>：当前仅openCypher语句（<code>MATCH</code>、<code>WITH</code>等）支持正则表达式，nGQL扩展语句（<code>FETCH</code>、<code>GO</code>、<code>LOOKUP</code>等）暂不支持正则表达式。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>当前仅openCypher语句（<code>MATCH</code>、<code>WITH</code>等）支持正则表达式，nGQL扩展语句（<code>FETCH</code>、<code>GO</code>、<code>LOOKUP</code>等）暂不支持正则表达式。</p>
+</div>
 <p>Nebula Graph支持使用正则表达式进行过滤，正则表达式的语法是继承自<code>std::regex</code>，您可以使用语法<code>=~ '&lt;regexp&gt;'</code>进行正则表达式匹配配。例如：</p>
 <div class="highlight"><pre><span></span><code>nebula&gt; RETURN "384748.39" =~ "\\d+(\\.\\d{2})?";
 +----------------------------+
@@ -1622,7 +1624,7 @@ nebula&gt; MATCH (v:player) WHERE v.name =~ 'Tony.*' RETURN v.name;
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年3月23日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

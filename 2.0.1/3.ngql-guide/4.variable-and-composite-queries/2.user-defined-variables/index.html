@@ -1455,9 +1455,10 @@
 <p>nGQL扩展的自定义变量可以表示为<code>$&lt;var_name&gt;</code>，<code>var_name</code>由字母或数字构成，不允许使用其他字符。</p>
 <p>自定义变量仅在当前执行有效，执行结束后变量也会释放，<strong>不能</strong>在其他客户端或执行中使用之前的自定义变量。</p>
 <p>您可以在复合查询中使用自定义变量。复合查询的详细信息请参见<a href="../1.composite-queries/">复合查询</a>。</p>
-<blockquote>
-<p><strong>说明</strong>：自定义变量区分大小写。</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>自定义变量区分大小写。</p>
+</div>
 <h2 id="_2">示例<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>nebula&gt; $var = GO FROM "player100" OVER follow YIELD follow._dst AS id; \
 GO FROM $var.id OVER serve YIELD $$.team.name AS Team, \
@@ -1472,7 +1473,7 @@ $^.player.name AS Player;
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年3月23日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
 </small>
 </div>
 </article>

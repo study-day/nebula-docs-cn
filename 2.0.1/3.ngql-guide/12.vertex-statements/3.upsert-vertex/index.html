@@ -848,12 +848,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_2">
-    注意事项
+    插入不存在的点
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_3">
-    示例
+    修改存在的点
   </a>
 </li>
 </ul>
@@ -1421,12 +1421,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_2">
-    注意事项
+    插入不存在的点
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_3">
-    示例
+    修改存在的点
   </a>
 </li>
 </ul>
@@ -1440,74 +1440,212 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
 <h1 id="upsert_vertex">UPSERT VERTEX<a class="headerlink" href="#upsert_vertex" title="Permanent link">¶</a></h1>
-<p><code>UPSERT VERTEX</code>语句结合<code>UPDATE</code>和<code>INSERT</code>，如果点存在，会更新点的属性；如果点不存在，会插入新的点。<code>UPSERT VERTEX</code>一次只能修改一个标签。</p>
-<p><code>UPSERT VERTEX</code>性能远低于<code>INSERT</code>，因为<code>UPSERT</code>是一组分片级别的读取、修改、写入操作。</p>
-<blockquote>
-<p><strong>禁止</strong>：禁止在高并发写操作的情况下使用<code>UPSERT</code>语句。</p>
-</blockquote>
-<h2 id="_1">语法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code>UPSERT VERTEX &lt;vid&gt; SET &lt;update_columns&gt; [WHEN &lt;condition&gt;] [YIELD &lt;columns&gt;];
-</code></pre></div>
-<ul>
-<li><code>vid</code>：需要<code>UPSERT</code>的点ID。</li>
-</ul>
-<ul>
-<li>
-<p><code>update_columns</code>：需要<code>UPSERT</code>的属性和值。例如<code>tag1.col1 = $^.tag2.col2 + 1</code>表示将<code>tag1.col1</code> 修改为<code>tag2.col2+1</code>。</p>
+<p><code>UPSERT VERTEX</code>语句结合<code>UPDATE</code>和<code>INSERT</code>，如果点存在，会修改点的属性值；如果点不存在，会插入新的点。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code>$^</code>表示要<code>UPSERT</code>的点.</p>
+<p><code>UPSERT VERTEX</code>一次只能修改一个标签。</p>
 </div>
-</li>
-</ul>
-<ul>
-<li><code>condition</code>：结合<code>WHEN</code>使用的约束条件，满足条件时才执行<code>UPSERT</code>。<code>condition</code>支持表达式。</li>
-</ul>
-<ul>
-<li><code>columns</code>：结合<code>YIELD</code>指定要返回的输出结果。</li>
-</ul>
-<h2 id="_2">注意事项<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<ul>
-<li>如果点不存在，则不论<code>WHEN</code>子句中的条件是否满足，都会创建一个新的点。没有被<code>SET</code>语句指定的属性使用默认值。如果没有默认值，则返回错误。</li>
-</ul>
-<ul>
-<li>如果点存在，而且满足<code>WHEN</code>子句的条件，则修改这个点的属性。</li>
-</ul>
-<ul>
-<li>如果点存在，但是不满足<code>WHEN</code>子句的条件，则不会执行修改操作。</li>
-</ul>
-<h2 id="_3">示例<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code>nebula&gt; INSERT VERTEX player(name, age) VALUES "player111":("Ben Simmons", 22);
-nebula&gt; UPSERT VERTEX "player111" \
-        SET player.name = "Dwight Howard", player.age = $^.player.age + 11 \
-        WHEN $^.player.name == "Ben Simmons" \
-        AND $^.player.age &gt; 20  \
-        YIELD $^.player.name AS Name, $^.player.age AS Age;
-+-----------------+-----+
-| Name            | Age |
-+-----------------+-----+
-| "Dwight Howard" | 33  |
-+-----------------+-----+
+<p><code>UPSERT VERTEX</code>性能远低于<code>INSERT</code>，因为<code>UPSERT</code>是一组分片级别的读取、修改、写入操作。</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>禁止在高并发写操作的情况下使用<code>UPSERT</code>语句，请使用<code>UPDATE</code>或<code>INSERT</code>代替。</p>
+</div>
+<h2 id="_1">语法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code>UPSERT VERTEX ON &lt;tag&gt; &lt;vid&gt;
+SET &lt;update_prop&gt;
+[WHEN &lt;condition&gt;]
+[YIELD &lt;output&gt;]
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>nebula&gt; FETCH PROP ON * "player123";
-Empty set (Time spent: 3.069/4.382 ms)
-nebula&gt; UPSERT VERTEX "player123" SET player.age = $^.player.age + 1;
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>是否必须</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ON &lt;tag&gt;</code></td>
+<td>是</td>
+<td>指定点的标签。要修改的属性必须在这个标签内。</td>
+<td><code>ON player</code></td>
+</tr>
+<tr>
+<td><code>&lt;vid&gt;</code></td>
+<td>是</td>
+<td>指定要修改或插入的点ID。</td>
+<td><code>"player100"</code></td>
+</tr>
+<tr>
+<td><code>SET &lt;update_prop&gt;</code></td>
+<td>是</td>
+<td>指定如何修改属性值。</td>
+<td><code>SET age = age +1</code></td>
+</tr>
+<tr>
+<td><code>WHEN &lt;condition&gt;</code></td>
+<td>否</td>
+<td>指定过滤条件。</td>
+<td><code>WHEN name == "Tim"</code></td>
+</tr>
+<tr>
+<td><code>YIELD &lt;output&gt;</code></td>
+<td>否</td>
+<td>指定语句的输出格式。</td>
+<td><code>YIELD name AS Name</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">插入不存在的点<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p>如果点不存在，无论<code>WHEN</code>子句的条件是否满足，都会插入点，同时执行<code>SET</code>子句，因此新插入的点的属性值取决于：</p>
+<ul>
+<li><code>SET</code>子句。</li>
+</ul>
+<ul>
+<li>属性是否有默认值。</li>
+</ul>
+<p>例如：</p>
+<ul>
+<li>要插入的点包含基于标签<code>player</code>的属性<code>name</code>和<code>age</code>。</li>
+</ul>
+<ul>
+<li><code>SET</code>子句指定<code>age=30</code>。</li>
+</ul>
+<p>不同情况下的属性值如下表。</p>
+<table>
+<thead>
+<tr>
+<th>是否满足<code>WHEN</code>子句条件</th>
+<th>属性是否有默认值</th>
+<th><code>name</code>属性值</th>
+<th><code>age</code>属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>是</td>
+<td>是</td>
+<td>默认值</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td>是</td>
+<td>否</td>
+<td><code>NULL</code></td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td>否</td>
+<td>是</td>
+<td>默认值</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td>否</td>
+<td>否</td>
+<td><code>NULL</code></td>
+<td><code>30</code></td>
+</tr>
+</tbody>
+</table>
+<p>示例如下：</p>
+<div class="highlight"><pre><span></span><code>// 查看三个点是否存在，结果“Empty set”表示顶点不存在。
+nebula&gt; FETCH PROP ON * "player666", "player667", "player668";
+Empty set
+
+nebula&gt; UPSERT VERTEX ON player "player666" \
+        SET age = 30 \
+        WHEN name == "Joe" \
+        YIELD name AS Name, age AS Age;
++----------+----------+
+| Name     | Age      |
++----------+----------+
+| __NULL__ | 30       |
++----------+----------+
+
+nebula&gt; UPSERT VERTEX ON player "player666" SET age = 31 WHEN name == "Joe" YIELD name AS Name, age AS Age;
++----------+-----+
+| Name     | Age |
++----------+-----+
+| __NULL__ | 30  |
++----------+-----+
+
+nebula&gt; UPSERT VERTEX ON player "player667" \
+        SET age = 31 \
+        YIELD name AS Name, age AS Age;
++----------+-----+
+| Name     | Age |
++----------+-----+
+| __NULL__ | 31  |
++----------+-----+
+
+nebula&gt; UPSERT VERTEX ON player "player668" \
+        SET name = "Amber", age = age + 1 \
+        YIELD name AS Name, age AS Age;
++---------+----------+
+| Name    | Age      |
++---------+----------+
+| "Amber" | __NULL__ |
++---------+----------+
 </code></pre></div>
-<p>在上述示例中，如果点<code>player123</code>不存在，<code>age</code>的默认值为<code>NULL</code>，则<code>player123</code>的<code>player.age</code>为<code>NULL</code>；如果<code>age</code>有默认值，则<code>player.age</code>为<code>默认值+1</code>。</p>
-<div class="highlight"><pre><span></span><code># age默认值为0。
-nebula&gt; CREATE TAG person(followers int, age int DEFAULT 0); 
+<p>上面最后一个示例中，因为<code>age</code>没有默认值，插入点时，<code>age</code>默认值为<code>NULL</code>，执行<code>age = age + 1</code>后仍为<code>NULL</code>。如果<code>age</code>有默认值，则<code>age = age + 1</code>可以正常执行，例如：</p>
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG player_with_default(name string, age int DEFAULT 20);
+Execution succeeded
 
-# 顺序执行，即followers为1（0+1），age为8。
-nebula&gt; UPSERT VERTEX "300" SET person.followers = $^.person.age + 1,  person.age = 8; 
+nebula&gt; UPSERT VERTEX ON player_with_default "player101" \
+        SET age = age + 1 \
+        YIELD name AS Name, age AS Age;
 
-# 顺序执行，即age为8，followers为9（8+1）。
-nebula&gt; UPSERT VERTEX "300" SET person.age = 8, person.followers = $^.person.age + 1; 
++----------+-----+
+| Name     | Age |
++----------+-----+
+| __NULL__ | 21  |
++----------+-----+
+</code></pre></div>
+<h2 id="_3">修改存在的点<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<p>如果点存在，且满足<code>WHEN</code>子句的条件，就会修改点的属性值。</p>
+<div class="highlight"><pre><span></span><code>nebula&gt; FETCH PROP ON player "player101";
++-----------------------------------------------------+
+| vertices_                                           |
++-----------------------------------------------------+
+| ("player101" :player{age: 42, name: "Tony Parker"}) |
++-----------------------------------------------------+
+
+nebula&gt; UPSERT VERTEX ON player "player101" \
+        SET age = age + 2 \
+        WHEN name == "Tony Parker" \
+        YIELD name AS Name, age AS Age;
++---------------+-----+
+| Name          | Age |
++---------------+-----+
+| "Tony Parker" | 44  |
++---------------+-----+
+</code></pre></div>
+<p>如果点存在，但是不满足<code>WHEN</code>子句的条件，修改不会生效。</p>
+<div class="highlight"><pre><span></span><code>nebula&gt; FETCH PROP ON player "player101";
++-----------------------------------------------------+
+| vertices_                                           |
++-----------------------------------------------------+
+| ("player101" :player{age: 44, name: "Tony Parker"}) |
++-----------------------------------------------------+
+
+nebula&gt; UPSERT VERTEX ON player "player101" \
+        SET age = age + 2 \
+        WHEN name == "Someone else" \
+        YIELD name AS Name, age AS Age;
++---------------+-----+
+| Name          | Age |
++---------------+-----+
+| "Tony Parker" | 44  |
++---------------+-----+
 </code></pre></div>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月10日</span>
 </small>
 </div>
 </article>

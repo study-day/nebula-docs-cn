@@ -1430,42 +1430,97 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
 <h1 id="update_edge">UPDATE EDGE<a class="headerlink" href="#update_edge" title="Permanent link">¶</a></h1>
-<p><code>UPDATE EDGE</code>语句可以修改边上边类型的属性。一次只能修改一个边类型。</p>
+<p><code>UPDATE EDGE</code>语句可以修改边上边类型的属性。</p>
 <p>Nebula Graph支持CAS（compare and set）操作。</p>
 <h2 id="_1">语法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code>UPDATE EDGE &lt;src_vid&gt; -&gt; &lt;dest_vid&gt; [@&lt;rank&gt;] OF &lt;edge_type&gt; SET &lt;update_properties&gt; [WHEN &lt;condition&gt;] [YIELD &lt;properties&gt;];
+<div class="highlight"><pre><span></span><code>UPDATE EDGE ON &lt;edge_type&gt;
+&lt;src_vid&gt; -&gt; &lt;dst_vid&gt; [@&lt;rank&gt;]
+SET &lt;update_prop&gt;
+[WHEN &lt;condition&gt;]
+[YIELD &lt;output&gt;]
 </code></pre></div>
-<ul>
-<li>
-<p><code>update_properties</code>：需要修改的属性和值。例如<code>e1.col1 = $^.e1.col2 + 1</code>表示将<code>e1.col1</code>修改为<code>e1.col2+1</code>。</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code>$^</code>表示要更新的边.</p>
-</div>
-</li>
-</ul>
-<ul>
-<li><code>condition</code>：结合<code>WHEN</code>使用的约束条件，满足条件时才修改。<code>condition</code>支持表达式。</li>
-</ul>
-<ul>
-<li><code>properties</code>：结合<code>YIELD</code>指定要返回的输出结果。</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>是否必须</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ON &lt;edge_type&gt;</code></td>
+<td>是</td>
+<td>指定边类型。要修改的属性必须在这个边类型内。</td>
+<td><code>ON serve</code></td>
+</tr>
+<tr>
+<td><code>&lt;src_vid&gt;</code></td>
+<td>是</td>
+<td>指定边的起始点ID。</td>
+<td><code>"player100"</code></td>
+</tr>
+<tr>
+<td><code>&lt;dst_vid&gt;</code></td>
+<td>是</td>
+<td>指定边的目的点ID。</td>
+<td><code>"team204"</code></td>
+</tr>
+<tr>
+<td><code>&lt;rank&gt;</code></td>
+<td>否</td>
+<td>指定边的rank值。</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>SET &lt;update_prop&gt;</code></td>
+<td>是</td>
+<td>指定如何修改属性值。</td>
+<td><code>SET start_year = start_year +1</code></td>
+</tr>
+<tr>
+<td><code>WHEN &lt;condition&gt;</code></td>
+<td>否</td>
+<td>指定过滤条件。如果<code>&lt;condition&gt;</code>结果为<code>false</code>，<code>SET</code>子句不会生效。</td>
+<td><code>WHEN end_year &lt; 2010</code></td>
+</tr>
+<tr>
+<td><code>YIELD &lt;output&gt;</code></td>
+<td>否</td>
+<td>指定语句的输出格式。</td>
+<td><code>YIELD start_year AS Start_Year</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="_2">示例<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code>nebula&gt; UPDATE EDGE "player100" -&gt; "team204"@0 \
-        OF serve \
+<div class="highlight"><pre><span></span><code>// 用GO语句查看边的属性值。
+nebula&gt; GO FROM "player100" \
+        OVER serve \
+        YIELD serve.start_year, serve.end_year;
++------------------+----------------+
+| serve.start_year | serve.end_year |
++------------------+----------------+
+| 1997             | 2016           |
++------------------+----------------+
+
+// 修改属性start_year的值，并返回end_year和新的start_year。
+
+nebula&gt; UPDATE EDGE on serve "player100" -&gt; "team204"@0 \
         SET start_year = start_year + 1 \
-        YIELD serve.start_year;
-+------------------+
-| serve.start_year |
-+------------------+
-| 1999             |
-+------------------+
+        WHEN end_year &gt; 2010 \
+        YIELD start_year, end_year;
++------------+----------+
+| start_year | end_year |
++------------+----------+
+| 1998       | 2016     |
++------------+----------+
 </code></pre></div>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月10日</span>
 </small>
 </div>
 </article>

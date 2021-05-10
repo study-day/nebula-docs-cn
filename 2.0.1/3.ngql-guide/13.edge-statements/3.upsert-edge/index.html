@@ -883,12 +883,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_2">
-    注意事项
+    插入不存在的边
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_3">
-    示例
+    修改存在的边
   </a>
 </li>
 </ul>
@@ -1421,12 +1421,12 @@
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_2">
-    注意事项
+    插入不存在的边
   </a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_3">
-    示例
+    修改存在的边
   </a>
 </li>
 </ul>
@@ -1440,64 +1440,235 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
 <h1 id="upsert_edge">UPSERT EDGE<a class="headerlink" href="#upsert_edge" title="Permanent link">¶</a></h1>
-<p><code>UPSERT EDGE</code>语句结合<code>UPDATE</code>和<code>INSERT</code>，如果边存在，会更新边的属性；如果边不存在，会插入新的边。<code>UPSERT EDGE</code>一次只能修改一个边类型。</p>
+<p><code>UPSERT EDGE</code>语句结合<code>UPDATE</code>和<code>INSERT</code>，如果边存在，会更新边的属性；如果边不存在，会插入新的边。</p>
 <p><code>UPSERT EDGE</code>性能远低于<code>INSERT</code>，因为<code>UPSERT</code>是一组分片级别的读取、修改、写入操作。</p>
-<blockquote>
-<p><strong>禁止</strong>：禁止在高并发写操作的情况下使用<code>UPSERT</code>语句。</p>
-</blockquote>
-<h2 id="_1">语法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code>UPSERT EDGE &lt;src_vid&gt; -&gt; &lt;dst_vid&gt; [@rank] OF &lt;edge_type&gt; SET &lt;update_properties&gt; [WHEN &lt;condition&gt;] [YIELD &lt;properties&gt;]
-</code></pre></div>
-<ul>
-<li>
-<p><code>update_properties</code>：需要<code>UPSERT</code>的属性和值。例如<code>e1.col1 = $^.e1.col2 + 1</code>表示将<code>e1.col1</code>修改为<code>e1.col2+1</code>。</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code>$^</code>表示要<code>UPSERT</code>的边.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>禁止在高并发写操作的情况下使用<code>UPSERT</code>语句，请使用<code>UPDATE</code>或<code>INSERT</code>代替。</p>
 </div>
-</li>
+<h2 id="_1">语法<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code>UPSERT EDGE ON &lt;edge_type&gt;
+&lt;src_vid&gt; -&gt; &lt;dst_vid&gt; [@rank]
+SET &lt;update_prop&gt;
+[WHEN &lt;condition&gt;]
+[YIELD &lt;properties&gt;]
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>是否必须</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ON &lt;edge_type&gt;</code></td>
+<td>是</td>
+<td>指定边类型。要修改的属性必须在这个边类型内。</td>
+<td><code>ON serve</code></td>
+</tr>
+<tr>
+<td><code>&lt;src_vid&gt;</code></td>
+<td>是</td>
+<td>指定边的起始点ID。</td>
+<td><code>"player100"</code></td>
+</tr>
+<tr>
+<td><code>&lt;dst_vid&gt;</code></td>
+<td>是</td>
+<td>指定边的目的点ID。</td>
+<td><code>"team204"</code></td>
+</tr>
+<tr>
+<td><code>&lt;rank&gt;</code></td>
+<td>否</td>
+<td>指定边的rank值。</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>SET &lt;update_prop&gt;</code></td>
+<td>是</td>
+<td>指定如何修改属性值。</td>
+<td><code>SET start_year = start_year +1</code></td>
+</tr>
+<tr>
+<td><code>WHEN &lt;condition&gt;</code></td>
+<td>否</td>
+<td>指定过滤条件。</td>
+<td><code>WHEN end_year &lt; 2010</code></td>
+</tr>
+<tr>
+<td><code>YIELD &lt;output&gt;</code></td>
+<td>否</td>
+<td>指定语句的输出格式。</td>
+<td><code>YIELD start_year AS Start_Year</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">插入不存在的边<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p>如果边不存在，无论<code>WHEN</code>子句的条件是否满足，都会插入边，同时执行<code>SET</code>子句，因此新插入的边的属性值取决于：</p>
+<ul>
+<li><code>SET</code>子句。</li>
 </ul>
 <ul>
-<li><code>condition</code>：结合<code>WHEN</code>使用的约束条件，满足条件时才执行<code>UPSERT</code>。<code>condition</code>支持表达式。</li>
+<li>属性是否有默认值。</li>
+</ul>
+<p>例如：</p>
+<ul>
+<li>要插入的边包含基于边类型<code>serve</code>的属性<code>start_year</code>和<code>end_year</code>。</li>
 </ul>
 <ul>
-<li><code>columns</code>：结合<code>YIELD</code>指定要返回的输出结果。</li>
+<li><code>SET</code>子句指定<code>end_year = 2021</code>。</li>
 </ul>
-<h2 id="_2">注意事项<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<ul>
-<li>如果边不存在，则不论<code>WHEN</code>子句中的条件是否满足，都会创建一个新的边。没有被<code>SET</code>语句指定的属性使用默认值。如果没有默认值，则返回错误。</li>
-</ul>
-<ul>
-<li>如果边存在，而且满足<code>WHEN</code>子句的条件，则修改这个边的属性。</li>
-</ul>
-<ul>
-<li>如果边存在，但是不满足<code>WHEN</code>子句的条件，则不会执行修改操作。</li>
-</ul>
-<h2 id="_3">示例<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code>nebula&gt; INSERT EDGE serve(start_year, end_year) VALUES "player100" -&gt; "team200":(1997, 2016); 
-nebula&gt; UPSERT EDGE "player100" -&gt; "team200" \
-        OF serve \
-        SET start_year = serve.start_year + 2 \
-        WHEN serve.end_year == 2016 \
-        YIELD serve.start_year AS Start, serve.end_year AS End;
-+-------+------+
-| Start | End  |
-+-------+------+
-| 1999  | 2016 |
-+-------+------+
+<p>不同情况下的属性值如下表。</p>
+<table>
+<thead>
+<tr>
+<th>是否满足<code>WHEN</code>子句条件</th>
+<th>属性是否有默认值</th>
+<th><code>start_year</code>属性值</th>
+<th><code>end_year</code>属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>是</td>
+<td>是</td>
+<td>默认值</td>
+<td><code>2021</code></td>
+</tr>
+<tr>
+<td>是</td>
+<td>否</td>
+<td><code>NULL</code></td>
+<td><code>2021</code></td>
+</tr>
+<tr>
+<td>否</td>
+<td>是</td>
+<td>默认值</td>
+<td><code>2021</code></td>
+</tr>
+<tr>
+<td>否</td>
+<td>否</td>
+<td><code>NULL</code></td>
+<td><code>2021</code></td>
+</tr>
+</tbody>
+</table>
+<p>示例如下：</p>
+<div class="highlight"><pre><span></span><code>// 查看如下三个点是否有serve类型的出边，结果“Empty set”表示没有serve类型的出边。
+nebula&gt; GO FROM "player666", "player667", "player668" \
+        OVER serve \
+        YIELD serve.start_year, serve.end_year;
+Empty set
 
-nebula&gt; FETCH PROP ON serve "player100" -&gt; "team200";
+nebula&gt; UPSERT EDGE on serve \
+        "player666" -&gt; "team200"@0 \
+        SET end_year = 2021 \
+        WHEN end_year == 2010 \
+        YIELD start_year, end_year;
++------------+----------+
+| start_year | end_year |
++------------+----------+
+| __NULL__   | 2021     |
++------------+----------+
+
+nebula&gt; UPSERT EDGE on serve \
+        "player666" -&gt; "team200"@0 \
+        SET end_year = 2022 \
+        WHEN end_year == 2010 \
+        YIELD start_year, end_year;
++------------+----------+
+| start_year | end_year |
++------------+----------+
+| __NULL__   | 2021     |
++------------+----------+
+
+nebula&gt; UPSERT EDGE on serve \
+        "player667" -&gt; "team200"@0 \
+        SET end_year = 2022 \
+        YIELD start_year, end_year;
++------------+----------+
+| start_year | end_year |
++------------+----------+
+| __NULL__   | 2022     |
++------------+----------+
+
+nebula&gt; UPSERT EDGE on serve \
+        "player668" -&gt; "team200"@0 \
+        SET start_year = 2000, end_year = end_year + 1 \
+        YIELD start_year, end_year;
++------------+----------+
+| start_year | end_year |
++------------+----------+
+| 2000       | __NULL__ |
++------------+----------+
+</code></pre></div>
+<p>上面最后一个示例中，因为<code>end_year</code>没有默认值，插入边时，<code>end_year</code>默认值为<code>NULL</code>，执行<code>end_year = end_year + 1</code>后仍为<code>NULL</code>。如果<code>end_year</code>有默认值，则<code>end_year = end_year + 1</code>可以正常执行，例如：</p>
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE EDGE serve_with_default(start_year int, end_year DEFAULT 2010);
+Execution succeeded
+
+nebula&gt; UPSERT EDGE on serve_with_default \
+        "player668" -&gt; "team200" \
+        SET end_year = end_year + 1 \
+        YIELD start_year, end_year;
++------------+----------+
+| start_year | end_year |
++------------+----------+
+| __NULL__   | 2011     |
++------------+----------+
+</code></pre></div>
+<h2 id="_3">修改存在的边<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<p>如果边存在，且满足<code>WHEN</code>子句的条件，就会修改边的属性值。</p>
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:"Ben Simmons"})-[e:serve]-(v2) \
+        RETURN e;
 +-----------------------------------------------------------------------+
-| edges_                                                                |
+| e                                                                     |
 +-----------------------------------------------------------------------+
-| [:serve "player100"-&gt;"team200" @0 {end_year: 2016, start_year: 1999}] |
+| [:serve "player149"-&gt;"team219" @0 {end_year: 2019, start_year: 2016}] |
 +-----------------------------------------------------------------------+
+
+nebula&gt; UPSERT EDGE on serve \
+        "player149" -&gt; "team219" \
+        SET end_year = end_year + 1 \
+        WHEN start_year == 2016 \
+        YIELD start_year, end_year;
++------------+----------+
+| start_year | end_year |
++------------+----------+
+| 2016       | 2020     |
++------------+----------+
+</code></pre></div>
+<p>如果边存在，但是不满足<code>WHEN</code>子句的条件，修改不会生效。</p>
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:"Ben Simmons"})-[e:serve]-(v2) \
+        RETURN e;
++-----------------------------------------------------------------------+
+| e                                                                     |
++-----------------------------------------------------------------------+
+| [:serve "player149"-&gt;"team219" @0 {end_year: 2020, start_year: 2016}] |
++-----------------------------------------------------------------------+
+
+
+nebula&gt; UPSERT EDGE on serve \
+        "player149" -&gt; "team219" \
+        SET end_year = end_year + 1 \
+        WHEN start_year != 2016 \
+        YIELD start_year, end_year;
++------------+----------+
+| start_year | end_year |
++------------+----------+
+| 2016       | 2020     |
++------------+----------+
 </code></pre></div>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月10日</span>
 </small>
 </div>
 </article>

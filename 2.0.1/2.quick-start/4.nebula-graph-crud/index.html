@@ -2236,20 +2236,19 @@ SET &lt;properties to be updated&gt; [WHEN &lt;condition&gt;] [YIELD &lt;columns
 </ul>
 <h3 id="_11">示例<a class="headerlink" href="#_11" title="Permanent link">¶</a></h3>
 <ul>
-<li>
-<p>用<code>UPDATE</code>修改VID为<code>player100</code>的球员的<code>name</code>属性，然后用<code>FETCH</code>语句检查结果。</p>
-<p>```ngql
-  nebula&gt; UPDATE VERTEX "player100" SET player.name = "Tim";
-  Execution succeeded (time spent 3483/3914 us)</p>
-<p>Wed, 21 Oct 2020 10:53:14 UTC</p>
-<p>nebula&gt; FETCH PROP ON player "player100";
-  +---------------------------------------------+
-  | vertices_                                   |
-  +---------------------------------------------+
-  | ("player100" :player{age: 42, name: "Tim"}) |
-  +---------------------------------------------+
-  Got 1 rows (time spent 2463/3042 us)
-  ```</p>
+<li>用<code>UPDATE</code>修改VID为<code>player100</code>的球员的<code>name</code>属性，然后用<code>FETCH</code>语句检查结果。<div class="highlight"><pre><span></span><code>nebula&gt; UPDATE VERTEX "player100" SET player.name = "Tim";
+Execution succeeded (time spent 3483/3914 us)
+
+Wed, 21 Oct 2020 10:53:14 UTC
+
+nebula&gt; FETCH PROP ON player "player100";
++---------------------------------------------+
+| vertices_                                   |
++---------------------------------------------+
+| ("player100" :player{age: 42, name: "Tim"}) |
++---------------------------------------------+
+Got 1 rows (time spent 2463/3042 us)
+</code></pre></div>
 </li>
 </ul>
 <ul>
@@ -2378,7 +2377,7 @@ Got 1 rows (time spent 5132/6246 us)
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月10日</span>
 </small>
 </div>
 </article>

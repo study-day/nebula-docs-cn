@@ -1659,10 +1659,11 @@
 </li>
 <li>
 <p>执行如下命令启动Nebula Graph服务。</p>
-<p>!!! Note</p>
-<div class="codehilite"><pre><span></span><code>  如果长期未更新镜像，请先更新[Nebula Graph镜像](#nebula_graphdocker)和[Nebula Console镜像](#nebula_console)。
-</code></pre></div>
-<p><div class="highlight"><pre><span></span><code>nebula-docker-compose<span class="o">]</span>$ docker-compose up -d
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果长期未更新镜像，请先更新<a href="#nebula_graphdocker">Nebula Graph镜像</a>和<a href="#nebula_console">Nebula Console镜像</a>。</p>
+</div>
+<div class="highlight"><pre><span></span><code>nebula-docker-compose<span class="o">]</span>$ docker-compose up -d
 Creating nebula-docker-compose_metad0_1 ... <span class="k">done</span>
 Creating nebula-docker-compose_metad2_1 ... <span class="k">done</span>
 Creating nebula-docker-compose_metad1_1 ... <span class="k">done</span>
@@ -1673,13 +1674,16 @@ Creating nebula-docker-compose_storaged0_1 ... <span class="k">done</span>
 Creating nebula-docker-compose_storaged2_1 ... <span class="k">done</span>
 Creating nebula-docker-compose_storaged1_1 ... <span class="k">done</span>
 </code></pre></div>
-  !!! Note</p>
-<div class="codehilite"><pre><span></span><code>  上述服务的更多信息，请参见[架构总览](../1.introduction/3.nebula-graph-architecture/1.architecture-overview.md)。
-</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>上述服务的更多信息，请参见<a href="../../1.introduction/3.nebula-graph-architecture/1.architecture-overview/">架构总览</a>。</p>
+</div>
 </li>
 <li>
 <p>连接Nebula Graph。</p>
-<p>1. 使用Nebula Console镜像启动一个容器，并连接到Nebula Graph服务所在的网络（nebula-docker-compose_nebula-net）中。</p>
+<ol>
+<li>使用Nebula Console镜像启动一个容器，并连接到Nebula Graph服务所在的网络（nebula-docker-compose_nebula-net）中。</li>
+</ol>
 <div class="highlight"><pre><span></span><code>$ docker run --rm -ti --network nebula-docker-compose_nebula-net --entrypoint<span class="o">=</span>/bin/sh vesoft/nebula-console:v2-nightly
 </code></pre></div>
 <p>!!! Note</p>
@@ -1692,13 +1696,17 @@ dbfa82505f0e        host                               host                <span
 ed55ccf356ae        nebula-docker-compose_nebula-net   bridge              <span class="nb">local</span>
 93ba48b4b288        none                               null                <span class="nb">local</span>
 </code></pre></div>
-<p>2. 通过Nebula Console连接Nebula Graph。</p>
-<p><div class="highlight"><pre><span></span><code>docker&gt; nebula-console -u user -p password --address<span class="o">=</span>graphd --port<span class="o">=</span><span class="m">9669</span>
+<ol>
+<li>通过Nebula Console连接Nebula Graph。</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker&gt; nebula-console -u user -p password --address<span class="o">=</span>graphd --port<span class="o">=</span><span class="m">9669</span>
 </code></pre></div>
-  !!! Note</p>
+<p>!!! Note</p>
 <div class="codehilite"><pre><span></span><code>  默认情况下，身份认证功能是关闭的，可以使用任意用户名和密码登录。如果想使用身份认证，请参见[身份认证](../7.data-security/1.authentication/1.authentication.md)。
 </code></pre></div>
-<p>3. 执行如下命令检查<code>nebula-storaged</code>进程状态。</p>
+<ol>
+<li>执行如下命令检查<code>nebula-storaged</code>进程状态。</li>
+</ol>
 <div class="highlight"><pre><span></span><code>nebula&gt; SHOW HOSTS<span class="p">;</span>
 +-------------+------+----------+--------------+----------------------+------------------------+
 <span class="p">|</span> Host        <span class="p">|</span> Port <span class="p">|</span> Status   <span class="p">|</span> Leader count <span class="p">|</span> Leader distribution  <span class="p">|</span> Partition distribution <span class="p">|</span>
@@ -1845,7 +1853,7 @@ Removing network nebula-docker-compose_nebula-net
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月10日</span>
 </small>
 </div>
 </article>

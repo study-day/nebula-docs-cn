@@ -1438,9 +1438,10 @@
 </li>
 <li>
 <p>在 <strong>上传文件</strong> 页面，点击 <strong>上传文件</strong> 按钮，并选择需要的 CSV 文件。本示例中，选择 <code>edge_serve.csv</code>、<code>edge_follow.csv</code>、<code>vertex_player.csv</code> 和 <code>vertex_team.csv</code> 文件。</p>
-<p>!!! Note</p>
-<div class="codehilite"><pre><span></span><code>  您可以一次选择多个 CSV 文件。
-</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>您可以一次选择多个 CSV 文件。</p>
+</div>
 </li>
 <li>
 <p>在文件列表的 <strong>操作</strong> 列，点击 <strong>预览</strong> 或 <strong>删除</strong>，保证文件信息正确，之后，再点击 <strong>下一步</strong> 按钮。</p>
@@ -1455,7 +1456,7 @@
 <p>在 <strong>vertexId</strong> 部分，完成以下操作：<br/>
    a. 在 <strong>对应列标</strong> 列，点击 <strong>选择</strong>。<br/>
 <img alt="在数据源中点击“选择”" src="../../figs/st-ug-009-1.png" title="为 vertexId 选择数据源"> </img></p>
-<p>b. 在弹出对话框中，选择数据列。在本示例中，<code>vertex_player.csv</code> 中仅有一列数据用于生成代表球员的 VID，<code>vertex_team.csv</code> 中选择表示 <code>teamName</code> 信息的 <strong>Column 0</strong> 用于生成代表球队的 VID。  </p>
+<p>b. 在弹出对话框中，选择数据列。在本示例中，<code>user.csv</code> 中仅有一列数据用于生成代表用户的 VID，<code>course.csv</code> 中选择表示 <code>courseName</code> 信息的 <strong>Column 1</strong> 用于生成代表课程的 VID。  </p>
 <p>!!! Note</p>
 <div class="codehilite"><pre><span></span><code>  在同一个图空间中，VID 始终唯一，不可重复。关于 VID 的信息，参考 [Nebula Graph 的点ID和分片ID](../../3.ngql-guide/20.appendix/vid-partition.md "点击进入 Nebula Graph 用户手册")。
 </code></pre></div>

@@ -1614,7 +1614,7 @@
 </li>
 <li>
 <p>编译Nebula Graph。</p>
-<p>为了适当地加快编译速度，可以使用选项<code>-j</code>并行编译。并行数量<code>N</code>建议为$min(CPU核数,\frac{内存(GB)}{2})$。</p>
+<p>为了适当地加快编译速度，可以使用选项<code>-j</code>并行编译。并行数量<code>N</code>建议为<span class="arithmatex">\(min(CPU核数,\frac{内存(GB)}{2})\)</span>。</p>
 <div class="highlight"><pre><span></span><code>$ make -j<span class="o">{</span>N<span class="o">}</span>
 </code></pre></div>
 </li>
@@ -1770,5 +1770,8 @@ $ cmake -DCMAKE_C_COMPILER<span class="o">=</span>&lt;path_to_clang/bin/clang&gt
 <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../../assets/javascripts/workers/search.4fa0e4ee.min.js", "version": {"method": "mike"}}</script>
 <script src="../../../assets/javascripts/bundle.1d3bfcf1.min.js"></script>
 <script src="../../../js/version-select.js"></script>
+<script src="../../../js/config.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>

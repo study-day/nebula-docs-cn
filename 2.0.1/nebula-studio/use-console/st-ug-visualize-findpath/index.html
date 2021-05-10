@@ -1418,13 +1418,13 @@
 </a>
 <h1 id="_1">查看子图<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>在 Studio 里，您可以在 <strong>控制台</strong> 上运行 <code>FIND SHORTEST | ALL PATH</code> 语句查询得到指定点之间的所有路径或最短路径，然后再通过 <strong>查看子图</strong> 功能将查询得到的路径导入 <strong>图探索</strong> 进行可视化展示。</p>
-<p>关于 <code>FIND SHORTEST | ALL PATH</code> 语句的详细信息，参考 <a href="https://docs.nebula-graph.com.cn/manual-CN/2.query-language/4.statement-syntax/4.graph-algorithms/find-path-syntax/" title="点击前往 Nebula Graph 网站">nGQL 用户手册</a>。</p>
+<p>关于 <code>FIND SHORTEST | ALL PATH</code> 语句的详细信息，参考 <a href="https://docs.nebula-graph.com.cn/2.0.1/3.ngql-guide/16.subgraph-and-path/2.find-path/" title="点击前往 Nebula Graph 网站">nGQL 用户手册</a>。</p>
 <h2 id="_2">支持版本<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p>Studio v1.2.1-beta 及以后版本。请更新版本，详细操作参考 <a href="../../about-studio/st-ug-check-updates/">版本更新</a>。</p>
+<p>Studio v2.2.0 及以后版本。请更新版本，详细操作参考 <a href="../../about-studio/st-ug-check-updates/">版本更新</a>。</p>
 <h2 id="_3">前提条件<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>在 <strong>控制台</strong> 上运行 <code>FIND PATH</code> 语句并查看子图之前，您需要确认以下信息：</p>
 <ul>
-<li>Studio 版本为 v1.2.1-beta 及以后版本。</li>
+<li>Studio 版本为 v2.2.0 及以后版本。</li>
 <li>Studio 已经连接到 Nebula Graph 数据库。详细信息参考 <a href="../../deploy-connect/st-ug-connect/">连接数据库</a>。</li>
 <li>已经导入数据集。详细操作参考 <a href="../../quick-start/st-ug-import-data/">导入数据</a>。</li>
 </ul>
@@ -1440,12 +1440,10 @@
 <li>
 <p>在命令行中，输入 <code>FIND SHORTEST PATH</code> 或者 <code>FIND ALL PATH</code> 语句，并点击 <img alt="表示运行的图标" src="../../figs/st-ug-008.png" title="Run 图标"> 图标。</img></p>
 <p>查询语句示例如下：</p>
-<div class="highlight"><pre><span></span><code>-- 对于本手册中所用数据集，
--- course 类点的 VID 由 courseName 经 Hash() 函数处理得到
-nebula&gt; FIND ALL PATH FROM 1,2,4,6,42 to hash("History of Ecology"),hash("Neurobiology") OVER action;
+<div class="highlight"><pre><span></span><code>nebula&gt; FIND ALL PATH FROM "player114" to "player100" OVER follow;
 </code></pre></div>
 <p>查询得到如下图所示路径信息。</p>
-<p><img alt="结果窗口显示返回的路径信息" src="../../figs/st-ug-045.png" title="返回的路径结果"/></p>
+<p><img alt="结果窗口显示返回的路径信息" src="../../figs/st-ug-045-1.png" title="返回的路径结果"/></p>
 </li>
 <li>
 <p>点击 <strong>查看子图</strong> 按钮。</p>
@@ -1461,14 +1459,14 @@ nebula&gt; FIND ALL PATH FROM 1,2,4,6,42 to hash("History of Ecology"),hash("Neu
 </li>
 </ol>
 <p>数据插入成功后，您可以看到查询结果的可视化表现。</p>
-<p><img alt="在画板上显示返回的路径结果" src="../../figs/st-ug-046.png" title="路径结果的可视化表现"/></p>
+<p><img alt="在画板上显示返回的路径结果" src="../../figs/st-ug-046-1.png" title="路径结果的可视化表现"/></p>
 <h2 id="_5">后续操作<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>数据导入图探索后，您可以对数据进行拓展分析。</p>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月7日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月10日</span>
 </small>
 </div>
 </article>

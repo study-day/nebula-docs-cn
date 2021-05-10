@@ -1424,7 +1424,7 @@
 <h1 id="_1">导入图探索<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
 <p>您可以在 <strong>控制台</strong> 上使用 nGQL 语句查询得到点或边的信息，再借助 <strong>导入图探索</strong> 功能实现查询结果的可视化。</p>
 <h2 id="_2">支持版本<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<p>Studio v1.2.1-beta 及以后版本。请更新版本，详细操作参考 <a href="../../about-studio/st-ug-check-updates/">版本更新</a>。</p>
+<p>Studio v2.2.0 及以后版本。请更新版本，详细操作参考 <a href="../../about-studio/st-ug-check-updates/">版本更新</a>。</p>
 <h2 id="_3">前提条件<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>使用导入图探索前，您需要确认以下信息：</p>
 <ul>
@@ -1438,7 +1438,7 @@
 <p>在工具栏里，点击 <strong>控制台</strong> 页签。</p>
 </li>
 <li>
-<p>在 <strong>当前Space</strong> 中选择一个图空间。在本示例中，选择 <strong>mooc_actions</strong>。</p>
+<p>在 <strong>当前Space</strong> 中选择一个图空间。在本示例中，选择 <strong>basketballplayer</strong>。</p>
 </li>
 <li>
 <p>在命令行中，输入查询语句，并点击 <img alt="表示运行的图标" src="../../figs/st-ug-008.png" title="Run 图标"> 图标。</img></p>
@@ -1447,10 +1447,10 @@
 <p>查询结果中必须包括边起点和终点 VID 信息。</p>
 </div>
 <p>查询语句示例如下：</p>
-<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM 56 OVER action YIELD action._src, action._dst;
+<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM "player102" OVER serve YIELD serve._src,serve._dst;
 </code></pre></div>
-<p>查询结果可以看到 <code>userId</code> 为 56 的用户参加了哪些课程。如下图所示。</p>
-<p><img alt="控制台里查询语句返回的边数据，包括边的起点 VID 和终点 VID" src="../../figs/st-ug-040.png" title="边数据"/></p>
+<p>查询结果可以看到 <code>playerId</code> 为 <code>palyer102</code> 的球员服务球队的起始年份及终止年份。如下图所示。</p>
+<p><img alt="控制台里查询语句返回的边数据，包括边的起点 VID 和终点 VID" src="../../figs/st-ug-040-1.png" title="边数据"/></p>
 </li>
 <li>
 <p>点击 <strong>导入图探索</strong> 按钮。</p>
@@ -1458,12 +1458,12 @@
 <li>
 <p>在弹出对话框中，配置如下：
    a. 点击 <strong>边类型</strong>。  </p>
-<p>b. 在 <strong>Edge Type</strong> 字段，填写边类型名称。在本示例中，填写 <code>action</code>。  </p>
-<p>c. 在 <strong>Src ID</strong> 字段，选择查询结果中代表边起点 VID 的列名。在本示例中，选择 <code>action._src</code>。  </p>
-<p>d. 在 <strong>Dst ID</strong> 字段，选择查询结果中代表边终点 VID 的列名。在本示例中，选择 <code>action._dst</code>。  </p>
+<p>b. 在 <strong>Edge Type</strong> 字段，填写边类型名称。在本示例中，填写 <code>serve</code>。  </p>
+<p>c. 在 <strong>Src ID</strong> 字段，选择查询结果中代表边起点 VID 的列名。在本示例中，选择 <code>serve._src</code>。  </p>
+<p>d. 在 <strong>Dst ID</strong> 字段，选择查询结果中代表边终点 VID 的列名。在本示例中，选择 <code>serve._dst</code>。  </p>
 <p>e. （可选）如果返回的边数据中有边权重（<code>rank</code>）信息，则在 <strong>Rank</strong> 字段，选择代表边权重的列名。如果 <strong>Rank</strong> 字段未设置，默认为 0。  </p>
 <p>f. 完成配置后，点击 <strong>导入</strong> 按钮。  </p>
-<p><img alt="填写边类型名称，选择代表边起点和终点 VID 的列名" src="../../figs/st-ug-041.png" title="配置边类型信息"/></p>
+<p><img alt="填写边类型名称，选择代表边起点和终点 VID 的列名" src="../../figs/st-ug-041-1.png" title="配置边类型信息"/></p>
 </li>
 <li>
 <p>在 <strong>图探索</strong> 页面的弹出窗口中，选择数据插入方式：</p>
@@ -1474,7 +1474,7 @@
 </li>
 </ol>
 <p>数据插入成功后，您可以看到查询得到的边数据的可视化表现。</p>
-<p><img alt="在图探索中可视化显示边数据查询结果" src="../../figs/st-ug-044.png" title="可视化边数据查询结果"/></p>
+<p><img alt="在图探索中可视化显示边数据查询结果" src="../../figs/st-ug-044-1.png" title="可视化边数据查询结果"/></p>
 <h2 id="_5">导入点数据结果<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>按以下步骤将 <strong>控制台</strong> 查询得到的点数据结果导入 <strong>图探索</strong>：</p>
 <ol>
@@ -1482,7 +1482,7 @@
 <p>在工具栏里，点击 <strong>控制台</strong> 页签。</p>
 </li>
 <li>
-<p>在 <strong>当前Space</strong> 中选择一个图空间。在本示例中，选择 <strong>mooc_actions</strong>。</p>
+<p>在 <strong>当前Space</strong> 中选择一个图空间。在本示例中，选择 <strong>basketballplayer</strong>。</p>
 </li>
 <li>
 <p>在命令行中，输入查询语句，并点击 <img alt="表示运行的图标" src="../../figs/st-ug-008.png" title="Run 图标"/> 图标。</p>
@@ -1491,12 +1491,10 @@
 <p>查询结果中必须包括点的 VID 信息。</p>
 </div>
 <p>查询语句示例如下：</p>
-<div class="highlight"><pre><span></span><code>-- 对于本手册中所用数据集，
--- course 类点的 VID 由 courseName 经 hash() 函数处理得到
-nebula&gt; FETCH PROP ON * hash("Media History and Theory"); 
+<div class="highlight"><pre><span></span><code>nebula&gt; FETCH PROP ON player "player100" YIELD player.name;
 </code></pre></div>
-<p>查询得到 <code>courseId</code> 为 <code>8</code> 的课程信息。如下图所示。</p>
-<p><img alt="控制台里查询语句返回的点数据" src="../../figs/st-ug-043.png" title="点数据"/></p>
+<p>查询得到 <code>playerId</code> 为 <code>player100</code> 的球员信息。如下图所示。</p>
+<p><img alt="控制台里查询语句返回的点数据" src="../../figs/st-ug-043-1.png" title="点数据"/></p>
 </li>
 <li>
 <p>点击 <strong>导入图探索</strong> 按钮。</p>
@@ -1506,7 +1504,7 @@ nebula&gt; FETCH PROP ON * hash("Media History and Theory");
    a. 点击 <strong>点</strong>。  </p>
 <p>b. 在 <strong>Vertex ID</strong> 字段，选择查询结果中代表点 VID 的列名。在本示例中，选择 <code>VertexID</code>。  </p>
 <p>c. 完成配置后，点击 <strong>导入</strong> 按钮。  </p>
-<p><img alt="选择代表点 VID 的列名" src="../../figs/st-ug-042.png" title="配置点信息"/></p>
+<p><img alt="选择代表点 VID 的列名" src="../../figs/st-ug-042-1.png" title="配置点信息"/></p>
 </li>
 <li>
 <p>在 <strong>图探索</strong> 上的弹出窗口中选择数据插入方式：</p>
@@ -1525,7 +1523,7 @@ nebula&gt; FETCH PROP ON * hash("Media History and Theory");
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月10日</span>
 </small>
 </div>
 </article>

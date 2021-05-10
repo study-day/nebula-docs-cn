@@ -1399,45 +1399,51 @@
 <ul>
 <li>边类型（Edge Type），以及每种边类型的属性。</li>
 </ul>
-<p>本文以美国 Stanford Network Analysis Platform (SNAP) 提供的 <a href="https://snap.stanford.edu/data/act-mooc.html" title="点击前往 Stanford Network Analysis Platform (SNAP)网站">Social Network: MOOC User Action Dataset</a> 为基础，并在其中加入由公开网络上获取的不重复的 97 个课程名称，说明如何规划 Schema。</p>
+<p>您可以下载Nebula Graph示例数据<a href="https://docs-cdn.nebula-graph.com.cn/dataset/dataset.zip" title="点击下载">Basketballplayer</a> ，本文将通过该实例说明如何规划 Schema。</p>
 <p>下表列出了 Schema 要素。</p>
 <table>
 <thead>
 <tr>
-<th align="left">要素</th>
+<th align="left">类型</th>
 <th align="left">名称</th>
-<th align="left">属性名称 (数据类型)</th>
+<th align="left">属性名（数据类型）</th>
 <th align="left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left">标签</td>
-<td align="left"><strong>user</strong></td>
-<td align="left"><code>userId</code> (<code>int</code>) <br/> 将使用 <code>userId</code> 生成这类点数据的 VID。</td>
-<td align="left">表示指定 MOOC 平台的用户。</td>
+<td align="left"><strong>player</strong></td>
+<td align="left">- <code>name</code> （<code>string</code>） <br/>- <code>age</code> （<code>int</code>）</td>
+<td align="left">表示球员。</td>
 </tr>
 <tr>
 <td align="left">标签</td>
-<td align="left"><strong>course</strong></td>
-<td align="left">- <code>courseId</code> (<code>int</code>)<br/> - <code>courseName</code> (<code>string</code>) <br/>本示例中将使用 <code>courseName</code> 的值通过 <code>Hash()</code> 函数生成这类点数据的 VID。因为 Nebula Graph 要求同一个图空间中所有点的 VID 必须始终唯一，而 <code>courseId</code> 与部分 <strong>user</strong> 类 VID 重复，所以，不能使用 <code>courseId</code> 生成 <strong>course</strong> 类点数据的 VID。</td>
-<td align="left">表示指定 MOOC 平台上的课程。</td>
+<td align="left"><strong>team</strong></td>
+<td align="left">- <code>name</code> （<code>string</code>）</td>
+<td align="left">表示球队。</td>
 </tr>
 <tr>
 <td align="left">边类型</td>
-<td align="left"><strong>action</strong></td>
-<td align="left">- <code>actionId</code> (<code>int</code>) <br/> - <code>duration</code> (<code>double</code>)：代表源数据中的 <em>timestamp</em> 数据，表示行为持续时间 <br/> - <code>label</code> (<code>bool</code>)：表示 <strong>user</strong> 完成一个行为后是否退出了课程 <br/> - <code>feature0</code> (<code>double</code>) <br/> - <code>feature1</code> (<code>double</code>) <br/> - <code>feature2</code> (<code>double</code>) <br/> - <code>feature3</code> (<code>double</code>)</td>
-<td align="left">表示用户参与课程的行为，分别用参与活动的持续时间、参与后用户是否退出了 MOOC 平台以及行为的四个维度（feature）来描述。其中，<code>label</code> 为 <code>true</code> 表示退出 MOOC 平台，为 <code>false</code> 表示未退出平台。</td>
+<td align="left"><strong>serve</strong></td>
+<td align="left">- <code>start_year</code> （<code>int</code>） <br/> - <code>end_year</code> （<code>int</code>）</td>
+<td align="left">表示球员的行为。<br/>该行为将球员和球队联系起来，方向是从球员到球队。</td>
+</tr>
+<tr>
+<td align="left">边类型</td>
+<td align="left"><strong>follow</strong></td>
+<td align="left">- <code>degree</code>（<code>int</code>）</td>
+<td align="left">表示球员的行为。<br/>该行为将两个球员联系起来，方向是从一个球员到另一个球员。</td>
 </tr>
 </tbody>
 </table>
-<p>下图说明示例中 <strong>user</strong> 类点与 <strong>course</strong> 类点之间如何发生关系（<strong>action</strong>）。</p>
-<p><img alt="用户在 MOOC 平台上参加课程" src="../../figs/st-ug-006.png" title="示例中 user 与 course 的关系"/></p>
+<p>下图说明示例中 <strong>player</strong> 类点与 <strong>team</strong> 类点之间如何发生关系（<strong>serve</strong>/<strong>follow</strong>）。</p>
+<p><img alt="球员和球员、球员和球队之间的关系" src="../../figs/st-ug-006-1.png" title="示例中 player 与 team 的关系"/></p>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月7日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月10日</span>
 </small>
 </div>
 </article>

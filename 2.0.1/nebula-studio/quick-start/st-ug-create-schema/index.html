@@ -1420,7 +1420,7 @@
 <p>在 Nebula Graph 中，您必须先有 Schema，再向其中写入点数据和边数据。本文描述如何使用 Nebula Graph 的 <strong>控制台</strong> 或 <strong>Schema</strong> 功能创建 Schema。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>您也可以使用 nebula-console 创建 Schema。详细信息，参考 <a href="https://github.com/vesoft-inc/nebula-docker-compose/blob/master/README_zh-CN.md">使用 Docker Compose 部署 Nebula Graph</a> 和 <a href="https://docs.nebula-graph.com.cn/manual-CN/1.overview/2.quick-start/1.get-started/">Nebula Graph 快速开始</a>。</p>
+<p>您也可以使用 nebula-console 创建 Schema。详细信息，参考 <a href="../../..">使用 Docker Compose 部署 Nebula Graph</a> 和 <a href="../../../2.quick-start/1.quick-start-workflow/">Nebula Graph 快速开始</a>。</p>
 </div>
 <h2 id="_1">前提条件<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>在 Studio 上创建 Schema 之前，您需要确认以下信息：</p>
@@ -1428,7 +1428,7 @@
 <li>Studio 已经连接到 Nebula Graph 数据库。</li>
 </ul>
 <ul>
-<li>您的账号拥有 GOD、ADMIN 或 DBA 权限。详细信息，参考 <a href="https://docs.nebula-graph.com.cn/manual-CN/3.build-develop-and-administration/4.account-management-statements/built-in-roles/">Nebula Graph 内置角色</a>。</li>
+<li>您的账号拥有 GOD、ADMIN 或 DBA 权限。详细信息，参考 <a href="../../../7.data-security/1.authentication/3.role-list/">Nebula Graph 内置角色</a>。</li>
 </ul>
 <ul>
 <li>您已经规划好了 Schema 的要素。</li>
@@ -1457,20 +1457,22 @@
 <p>在工具栏里，点击 <strong>控制台</strong> 页签。</p>
 </li>
 <li>
-<p>在 <strong>当前Space</strong> 中选择一个图空间。在本示例中，选择 <strong>mooc_actions</strong>。</p>
-<p><img alt="在 当前Space 中选择一个图空间" src="../../figs/st-ug-007.png" title="选择图空间"/></p>
+<p>在 <strong>当前Space</strong> 中选择一个图空间。在本示例中，选择 <strong>basketballplayer</strong>。</p>
+<p><img alt="在 当前Space 中选择一个图空间" src="../../figs/st-ug-007-1.png" title="选择图空间"/></p>
 </li>
 <li>
 <p>在命令行中，依次输入以下语句，并点击 <img alt="表示运行的图标" src="../../figs/st-ug-008.png" title="Run 图标"> 图标。</img></p>
-<div class="highlight"><pre><span></span><code>-- 创建标签 user，带有 1 个属性
-CREATE TAG user (userId int);
+<div class="highlight"><pre><span></span><code>-- 创建标签 player，带有 2 个属性
+CREATE TAG player(name string, age int);
 
--- 创建标签 course，带有两个属性
-CREATE TAG course (courseId int, courseName string);
+-- 创建标签 team，带有 1 个属性
+CREATE TAG team(name string);
 
--- 创建边类型，带有 7 个属性
-CREATE EDGE action (actionId int, duration double, label bool, feature0 double, 
-feature1 double, feature2 double, feature3 double); 
+-- 创建边类型 follow，带有 1 个属性
+CREATE EDGE follow(degree int);
+
+-- 创建边类型 serve，带有 2 个属性
+CREATE EDGE serve(start_year int, end_year int);
 </code></pre></div>
 </li>
 </ol>
@@ -1482,9 +1484,10 @@ SHOW TAGS;
 SHOW EDGES;
 
 -- 查看每种标签和边类型的结构是否正确
-DESCRIBE TAG user;
-DESCRIBE TAG course;
-DESCRIBE EDGE action;
+DESCRIBE TAG player;
+DESCRIBE TAG team;
+DESCRIBE EDGE follow;
+DESCRIBE EDGE serve;
 </code></pre></div>
 <h2 id="_2">后续操作<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>创建 Schema 后，您可以开始 <a href="../st-ug-import-data/">导入数据</a>。</p>
@@ -1492,7 +1495,7 @@ DESCRIBE EDGE action;
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月10日</span>
 </small>
 </div>
 </article>

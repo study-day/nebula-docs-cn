@@ -1387,6 +1387,12 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#docker_studio">
+    Docker 部署 Studio
+  </a>
+<nav aria-label="Docker 部署 Studio" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
 <a class="md-nav__link" href="#_1">
     前提条件
   </a>
@@ -1396,14 +1402,41 @@
     操作步骤
   </a>
 </li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rpm_studio">
+    RPM 部署Studio
+  </a>
+<nav aria-label="RPM 部署Studio" class="md-nav">
+<ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_3">
-    后续操作
+    前提条件
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#faq">
-    FAQ
+<a class="md-nav__link" href="#_4">
+    安装
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+    卸载
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+    异常处理
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+    后续操作
   </a>
 </li>
 </ul>
@@ -1417,20 +1450,46 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
 <h1 id="studio">部署 Studio<a class="headerlink" href="#studio" title="Permanent link">¶</a></h1>
-<p>云服务版 Studio 只能在 Nebula Graph Cloud Service 上使用。当您在 Nebula Graph Cloud Service 上创建 Nebula Graph 实例时即自动完成云服务版本 Studio 的部署，一键直连即可使用，不需要自己部署。详细信息参考<a href="https://cloud-docs.nebula-graph.com.cn/cn/posts/manage-instances/dbaas-ug-connect-nebulastudio/" title="点击前往 Nebula Graph Cloud Service 用户手册">《Nebula Graph Cloud Service 用户手册》</a>。但是，您需要自己部署 Docker 版 Studio。本文描述如何部署 Docker 版 Studio。</p>
-<h2 id="_1">前提条件<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>Nebula Graph Studio（ 以下简称 Studio ）支持云端或本地部署。云服务版 Studio 只能在 Nebula Graph Cloud Service 上使用。当您在 Nebula Graph Cloud Service 上创建 Nebula Graph 实例时即自动完成云服务版本 Studio 的部署，一键直连即可使用，不需要自己部署。详细信息参考<a href="https://cloud-docs.nebula-graph.com.cn/cn/posts/manage-instances/dbaas-ug-connect-nebulastudio/" title="点击前往 Nebula Graph Cloud Service 用户手册">《Nebula Graph Cloud Service 用户手册》</a>。本文介绍如何在本地通过 Docker 和 RPM 部署 Studio。</p>
+<h2 id="docker_studio">Docker 部署 Studio<a class="headerlink" href="#docker_studio" title="Permanent link">¶</a></h2>
+<h3 id="_1">前提条件<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
 <p>在部署 Docker 版 Studio 之前，您需要确认以下信息：</p>
 <ul>
 <li>
-<p>Nebula Graph 服务已经部署并启动。详细信息，参考<a href="https://docs.nebula-graph.com.cn/2.0.1/4.deployment-and-installation/1.resource-preparations/" title="点击前往 Nebula Graph 安装部署">Nebula Graph安装部署</a>。</p>
+<p>Nebula Graph 服务已经部署并启动。详细信息，参考<a href="../../../4.deployment-and-installation/1.resource-preparations/" title="点击前往 Nebula Graph 安装部署">Nebula Graph安装部署</a>。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>您可以使用Docker Compose或RPM方式部署并启动 Nebula Graph 服务。如果您刚开始使用 Nebula Graph，建议您使用 Docker Compose 部署 Nebula Graph。详细信息参考 <a href="https://github.com/vesoft-inc/nebula-docker-compose/blob/master/README_zh-CN.md" title="点击前往 GitHub 网站">使用 Docker Compose 部署 Nebula Graph</a>。</p>
+<p>您可以使用Docker Compose或RPM方式部署并启动 Nebula Graph 服务。如果您刚开始使用 Nebula Graph，建议您使用 Docker Compose 部署 Nebula Graph。详细信息参考 <a href="../../../2.quick-start/2.deploy-nebula-graph-with-docker-compose/" title="点击前往 GitHub 网站">使用 Docker Compose 部署 Nebula Graph</a>。</p>
 </div>
 </li>
 </ul>
 <ul>
 <li>在即将运行 Docker 版 Studio 的机器上安装并启动 Docker Compose。详细信息参考 <a href="https://docs.docker.com/compose/install/" title="点击前往 Docker 文档中心">Docker Compose 文档</a>。</li>
+<li>
+<p>确保在安装开始前，以下端口处于未被使用状态。</p>
+<table>
+<thead>
+<tr>
+<th>端口号</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7001</td>
+<td>Studio提供的web服务</td>
+</tr>
+<tr>
+<td>8080</td>
+<td>Nebula-http-gateway，Client的HTTP服务</td>
+</tr>
+<tr>
+<td>5699</td>
+<td>Nebula importer文件导入工具，数据导入服务</td>
+</tr>
+</tbody>
+</table>
+</li>
 </ul>
 <ul>
 <li>
@@ -1446,7 +1505,7 @@
 <p>配置文件的路径和方法因您的操作系统和/或 Docker Desktop 版本而异。详细信息参考 <a href="https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file" title="点击前往 Docker 文档中心">Docker Daemon 配置文档</a>。</p>
 </li>
 </ul>
-<h2 id="_2">操作步骤<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<h3 id="_2">操作步骤<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <p>在命令行工具中按以下步骤依次运行命令，部署并启动 Docker 版 Studio：</p>
 <ol>
 <li>
@@ -1482,40 +1541,126 @@ Creating docker_nginx_1    ... <span class="k">done</span>
 <p>在运行 Docker 版 Studio 的机器上，您可以运行 <code>ifconfig</code> 或者 <code>ipconfig</code> 获取本机 IP 地址。如果您使用这台机器访问 Studio，可以在浏览器地址栏里输入 <code>http://localhost:7001</code>。</p>
 </div>
 <p>如果您在浏览器窗口中能看到以下登录界面，表示您已经成功部署并启动 Studio。</p>
-<p><img alt="Nebula Graph Studio 登录界面" src="../../figs/st-ug-001.png" title="Nebula Graph Studio 登录界面"/></p>
+<p><img alt="Nebula Graph Studio 登录界面" src="../../figs/st-ug-001-1.png" title="Nebula Graph Studio 登录界面"/></p>
 </li>
 </ol>
-<h2 id="_3">后续操作<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
-<p>进入 Studio 登录界面后，您需要连接 Nebula Graph。详细信息，参考 <a href="../st-ug-connect/">连接数据库</a>。</p>
-<h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">¶</a></h2>
-<p>Q:studio有rpm安装或者其他非docker部署方式吗？</p>
-<p>A:目前支持rpm包安装，详细信息，参考<a href="https://docs.nebula-graph.com.cn/2.0.1/4.deployment-and-installation/2.compile-and-install-nebula-graph/2.install-nebula-graph-by-rpm-or-deb/">使用RPM或DEB安装包安装Nebula Graph</a>。</p>
-<p>Q:前提条件搭建成功，studio启动失败。</p>
-<p>A:您可以检查7001，8080，5699的端口是否被占用。如果端口号被占用，可以考虑kill服务或修改studio服务启动端口。</p>
-<div class="highlight"><pre><span></span><code>//检查端口是否被占用
-losf -i:7001
+<h2 id="rpm_studio">RPM 部署Studio<a class="headerlink" href="#rpm_studio" title="Permanent link">¶</a></h2>
+<h3 id="_3">前提条件<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<p>在部署 RPM 版 Studio 之前，您需要确认以下信息：</p>
+<ul>
+<li>Nebula Graph 服务已经部署并启动。详细信息，参考<a href="../../../4.deployment-and-installation/1.resource-preparations/" title="点击前往 Nebula Graph 安装部署">Nebula Graph 安装部署</a>。<blockquote>
+<p><strong>说明</strong>：您可以使用Docker Compose或RPM方式部署并启动 Nebula Graph 服务。如果您刚开始使用 Nebula Graph，建议您使用 Docker Compose 部署 Nebula Graph。详细信息参考 <a href="../../../2.quick-start/2.deploy-nebula-graph-with-docker-compose/" title="点击前往Nebula Graph 安装部署">使用 Docker Compose 部署 Nebula Graph</a>。</p>
+</blockquote>
+</li>
+<li>您的使用的 Linux 发行版为 CentOS ，安装有 losf 和版本为 v10.16.0 + 以上的 Node.js。</li>
+<li>
+<p>确保在安装开始前，以下端口处于未被使用状态。</p>
+<table>
+<thead>
+<tr>
+<th>端口号</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7001</td>
+<td>Studio提供的web服务</td>
+</tr>
+<tr>
+<td>8080</td>
+<td>Nebula-http-gateway，Client的HTTP服务</td>
+</tr>
+<tr>
+<td>5699</td>
+<td>Nebula importer文件导入工具，数据导入服务</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h3 id="_4">安装<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
+<ol>
+<li>根据需要选择并下载RPM包，建议您选择最新版本。常用下载链接如下：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>安装包</th>
+<th>检验和</th>
+<th>Nebula版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://oss-cdn.nebula-graph.com.cn/nebula-graph-studio/nebula-graph-studio-2.2.1-1.x86_64.rpm">nebula-graph-studio-2.2.1-1.x86_64.rpm</a></td>
+<td><a href="https://oss-cdn.nebula-graph.com.cn/nebula-graph-studio/nebula-graph-studio-2.2.1-1.x86_64.rpm.sha256">nebula-graph-studio-2.2.1-1.x86_64.rpm.sha256</a></td>
+<td>2.0.1</td>
+</tr>
+<tr>
+<td><a href="https://oss-cdn.nebula-graph.com.cn/nebula-graph-studio/nebula-graph-studio-2.2.0-1.x86_64.rpm">nebula-graph-studio-2.2.0-1.x86_64.rpm</a></td>
+<td><a href="https://oss-cdn.nebula-graph.com.cn/nebula-graph-studio/nebula-graph-studio-2.2.0-1.x86_64.rpm.sha256">nebula-graph-studio-2.2.0-1.x86_64.rpm.sha256</a></td>
+<td>2.0.1</td>
+</tr>
+<tr>
+<td><a href="https://oss-cdn.nebula-graph.com.cn/nebula-graph-studio/nebula-graph-studio-2.1.9-1.x86_64.rpm">nebula-graph-studio-2.1.9-1.x86_64.rpm</a></td>
+<td>-</td>
+<td>2.0 GA</td>
+</tr>
+<tr>
+<td><a href="https://oss-cdn.nebula-graph.com.cn/nebula-graph-studio/nebula-graph-studio-1.2.7-2.x86_64.rpm">nebula-graph-studio-1.2.7-2.x86_64.rpm</a></td>
+<td><a href="https://oss-cdn.nebula-graph.com.cn/nebula-graph-studio/nebula-graph-studio-1.2.7-2.x86_64.rpm.sha256">nebula-graph-studio-1.2.7-2.x86_64.rpm.sha256</a></td>
+<td>1.x</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>使用<code>sudo rpm -i &lt;rpm&gt;</code>命令安装RPM包。</li>
+</ol>
+<p>例如，安装Studio 2.2.0 版本需要运行以下命令：
+<div class="highlight"><pre><span></span><code>$ sudo rpm -i nebula-graph-studio-2.2.0-1.x86_64.rpm
+</code></pre></div></p>
+<h3 id="_5">卸载<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
+<p>您可以使用以下的命令卸载 Studio。
+<div class="highlight"><pre><span></span><code>$ sudo rpm -e nebula-graph-studio-2.2.0-1.x86_64.rpm
+</code></pre></div></p>
+<h3 id="_6">异常处理<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
+<p>如果您在安装过程中自动启动失败或是您需要手动启动或停止服务，请使用以下命令
+- 手动启动服务
+<div class="highlight"><pre><span></span><code>$ bash /usr/local/nebula-graph-studio/scripts/start.sh
+</code></pre></div></p>
+<ul>
+<li>手动停止服务
+<div class="highlight"><pre><span></span><code>$ bash /usr/local/nebula-graph-studio/scripts/stop.sh
+</code></pre></div></li>
+</ul>
+<p>如果启动服务时遇到报错报错 ERROR: bind EADDRINUSE 0.0.0.0:7001，您可以通过以下命令查看端口7001是否被占用。
+<div class="highlight"><pre><span></span><code>$ losf -i:7001
+</code></pre></div></p>
+<p>如果端口被占用，且无法结束该端口上进程，您可以通过以下命令修改Studio服务启动端口，并重新启动服务。
+<div class="highlight"><pre><span></span><code>//修改studio服务启动端口
+ $ vi config/config.default.js
 
-//修改studio服务启动端口
-$ vi config/config.default.js
+ //修改
+ ...
+     config.cluster <span class="o">=</span> <span class="o">{</span>
+         listen: <span class="o">{</span>
+             port: <span class="m">7001</span>, // 修改这个端口号，改成任意一个当前可用的即可
+             hostname: <span class="s1">'0.0.0.0'</span>,
+         <span class="o">}</span>,
+     <span class="o">}</span><span class="p">;</span>
+ ...
 
-//修改
-...
-    config.cluster <span class="o">=</span> <span class="o">{</span>
-        listen: <span class="o">{</span>
-            port: <span class="m">7001</span>, // 修改这个端口号，改成任意一个当前可用的即可
-            hostname: <span class="s1">'0.0.0.0'</span>,
-        <span class="o">}</span>,
-    <span class="o">}</span><span class="p">;</span>
-...
-
-//重新启动npm
-$ npm run start
-</code></pre></div>
+ //重新启动npm
+ $ npm run start
+</code></pre></div></p>
+<h2 id="_7">后续操作<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
+<p>进入 Studio 登录界面后，您需要连接 Nebula Graph。详细信息，参考<a href="../st-ug-connect/">连接数据库</a>。</p>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月10日</span>
 </small>
 </div>
 </article>

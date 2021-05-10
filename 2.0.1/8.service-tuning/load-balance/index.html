@@ -1519,9 +1519,10 @@
 <p>为了平衡分片和Raft leader的分布，Nebula Graph中图空间的副本数都必须大于1。</p>
 <h2 id="_2">均衡分片分布<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p><code>BALANCE DATA</code>语句会开始一个任务，将Nebula Graph集群中的分片平均分配到所有Storage服务器。通过创建和执行一组子任务来迁移数据和均衡分片分布。</p>
-<blockquote>
-<p><strong>禁止</strong>：不要停止集群中的任何机器或改变机器的IP地址，直到所有子任务完成，否则后续子任务会失败。</p>
-</blockquote>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>不要停止集群中的任何机器或改变机器的IP地址，直到所有子任务完成，否则后续子任务会失败。</p>
+</div>
 <h3 id="_3">示例<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <p>以横向扩容Nebula Graph为例，集群中增加新的Storage服务器后，新服务器上没有分片。</p>
 <ol>
@@ -1643,6 +1644,10 @@
 <div class="highlight"><pre><span></span><code>BALANCE DATA REMOVE 192.168.0.8:19779,192.168.0.9:19779;
 </code></pre></div>
 <p>Nebula Graph将启动一个负载均衡任务，迁移storage3和storage4中的分片，然后将服务器从集群中移除。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>已下线节点状态会显示为OFFLINE.</p>
+</div>
 <h2 id="leader">均衡leader分布<a class="headerlink" href="#leader" title="Permanent link">¶</a></h2>
 <p><code>BALANCE DATA</code>只能均衡分片分布，不能均衡Raft leader分布。您可以使用命令<code>BALANCE LEADER</code>均衡leader分布。</p>
 <h3 id="_6">示例<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
@@ -1670,7 +1675,7 @@
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月8日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月10日</span>
 </small>
 </div>
 </article>

@@ -1463,10 +1463,10 @@
 </ul>
 <h2 id="opencypher">OpenCypher兼容性<a class="headerlink" href="#opencypher" title="Permanent link">¶</a></h2>
 <p>openCypher、Cypher和nGQL之间有一些细微区别，例如下面openCypher的示例，不能将单引号替换为双引号。</p>
-<p>```ngql
- # File: Literals.feature
-Feature: Literals</p>
-<p>Background:
+<div class="highlight"><pre><span></span><code># File: Literals.feature
+Feature: Literals
+
+Background:
     Given any graph
  Scenario: Return a single-quoted string
     When executing query:
@@ -1477,21 +1477,20 @@ Feature: Literals</p>
       | literal |
       | ''      |    # Note: it should return single-quotes as openCypher required.
     And no side effects
-<div class="highlight"><pre><span></span><code>Cypher的返回结果同时支持单引号和双引号，nGQL遵循Cypher的方式。
-
-```ngql
-nebula &gt; YIELD '' AS quote1, "" AS quote2, "'" AS quote3, '"' AS quote4
+</code></pre></div>
+<p>Cypher的返回结果同时支持单引号和双引号，nGQL遵循Cypher的方式。</p>
+<div class="highlight"><pre><span></span><code>nebula &gt; YIELD '' AS quote1, "" AS quote2, "'" AS quote3, '"' AS quote4
 +--------+--------+--------+--------+
 | quote1 | quote2 | quote3 | quote4 |
 +--------+--------+--------+--------+
 | ""     | ""     | "'"    | """    |
 +--------+--------+--------+--------+
-</code></pre></div></p>
+</code></pre></div>
 <hr/>
 <div class="md-source-date">
 <small>
     
-      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年4月1日</span>
+      最后更新: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2021年5月10日</span>
 </small>
 </div>
 </article>
